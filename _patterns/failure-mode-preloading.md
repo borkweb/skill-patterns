@@ -1,6 +1,7 @@
 ---
 title: "Failure mode preloading"
 slug: failure-mode-preloading
+icon: "fa-solid fa-triangle-exclamation"
 category: critique
 order: 5
 summary: "Names the specific ways this kind of work tends to go wrong, so the agent watches for them."

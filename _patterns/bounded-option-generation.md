@@ -1,6 +1,7 @@
 ---
 title: "Bounded option generation"
 slug: bounded-option-generation
+icon: "fa-solid fa-code-branch"
 category: decision
 order: 1
 summary: "Forces a fixed number of distinct alternatives with trade-offs before converging on a recommendation."

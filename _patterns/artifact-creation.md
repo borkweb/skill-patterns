@@ -1,6 +1,7 @@
 ---
 title: "Artifact creation"
 slug: artifact-creation
+icon: "fa-solid fa-cube"
 category: output
 order: 2
 summary: "Directs the Skill to produce a concrete, standalone deliverable rather than a conversational response."

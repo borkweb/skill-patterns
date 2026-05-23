@@ -1,6 +1,7 @@
 ---
 title: "Human in the loop"
 slug: human-in-the-loop
+icon: "fa-solid fa-hand"
 category: control
 order: 1
 summary: "Inserts explicit checkpoints where the agent pauses for discernment before proceeding."

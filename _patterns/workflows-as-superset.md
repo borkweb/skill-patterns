@@ -1,6 +1,7 @@
 ---
 title: "Workflows as superset"
 slug: workflows-as-superset
+icon: "fa-solid fa-diagram-project"
 category: control
 order: 3
 summary: "Composes this Skill with others into a sequenced flow."

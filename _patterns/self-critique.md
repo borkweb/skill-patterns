@@ -1,6 +1,7 @@
 ---
 title: "Self-critique"
 slug: self-critique
+icon: "fa-solid fa-pen-to-square"
 category: critique
 order: 2
 summary: "Has the agent review its own output against criteria, identify weaknesses, and revise before returning."

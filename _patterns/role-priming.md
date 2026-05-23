@@ -1,6 +1,7 @@
 ---
 title: "Role priming"
 slug: role-priming
+icon: "fa-solid fa-masks-theater"
 category: control
 order: 2
 summary: "Puts the agent in a specific stance for the duration of the Skill so its reasoning carries that perspective."

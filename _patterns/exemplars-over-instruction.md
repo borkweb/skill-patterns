@@ -1,6 +1,7 @@
 ---
 title: "Exemplars over instruction"
 slug: exemplars-over-instruction
+icon: "fa-solid fa-star"
 category: grounding
 order: 2
 summary: "Anchors the Skill's output in concrete examples of \"good\" rather than describing it in rules."

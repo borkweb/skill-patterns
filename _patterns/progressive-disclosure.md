@@ -1,6 +1,7 @@
 ---
-title: "Progressive disclosure / scoped context"
+title: "Progressive disclosure"
 slug: progressive-disclosure
+icon: "fa-solid fa-layer-group"
 category: control
 order: 5
 summary: "Loads only the context needed for the current sub-task, expanding as the work deepens."

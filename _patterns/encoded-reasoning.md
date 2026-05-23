@@ -1,6 +1,7 @@
 ---
 title: "Encoded reasoning"
 slug: encoded-reasoning
+icon: "fa-solid fa-list-check"
 category: critique
 order: 1
 summary: "Bakes review rubrics, validation steps, and quality checks into how the Skill operates."

@@ -1,6 +1,7 @@
 ---
 title: "Format projection"
 slug: format-projection
+icon: "fa-solid fa-shapes"
 category: output
 order: 1
 summary: "Renders one canonical artifact into multiple downstream forms while preserving the underlying content."

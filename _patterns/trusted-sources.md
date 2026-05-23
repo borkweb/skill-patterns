@@ -1,6 +1,7 @@
 ---
 title: "Trusted sources / grounding"
 slug: trusted-sources
+icon: "fa-solid fa-anchor"
 category: grounding
 order: 1
 summary: "Anchors the agent in specific authoritative references so it stops improvising from training data."

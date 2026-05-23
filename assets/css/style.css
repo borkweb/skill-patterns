@@ -129,7 +129,9 @@ a:hover { text-decoration: underline; }
 .card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; }
 .pcard { display: block; border: 1px solid var(--border); border-radius: 10px; padding: 16px; background: var(--bg-elevated); text-decoration: none; }
 .pcard:hover { border-color: var(--accent); text-decoration: none; }
+.pcard__icon { color: var(--accent); font-size: 18px; margin-bottom: 10px; }
 .pcard__title { font-size: 16px; font-weight: 700; color: var(--text); margin: 0 0 6px; letter-spacing: -.01em; }
+.pattern__title i { color: var(--accent); margin-right: 10px; font-size: 0.9em; }
 .pcard__summary { font-size: 13.5px; color: var(--text-muted); margin: 0; line-height: 1.45; }
 .no-results { color: var(--text-faint); padding: 12px 0; }
 

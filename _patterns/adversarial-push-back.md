@@ -1,6 +1,7 @@
 ---
 title: "Adversarial push back"
 slug: adversarial-push-back
+icon: "fa-solid fa-gavel"
 category: critique
 order: 3
 summary: "Pits a challenger persona or parallel agent against the work to expose weaknesses before it ships."

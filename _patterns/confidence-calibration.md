@@ -1,6 +1,7 @@
 ---
 title: "Confidence calibration"
 slug: confidence-calibration
+icon: "fa-solid fa-gauge"
 category: grounding
 order: 3
 summary: "Requires the agent to mark which parts of its output it's confident about and which are guesses."

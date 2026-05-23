@@ -1,6 +1,7 @@
 ---
 title: "Premortem"
 slug: premortem
+icon: "fa-solid fa-skull"
 category: critique
 order: 4
 summary: "Skill imagines the work has already failed and reasons backward to why."

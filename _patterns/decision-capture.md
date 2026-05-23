@@ -1,6 +1,7 @@
 ---
 title: "Decision capture"
 slug: decision-capture
+icon: "fa-solid fa-clipboard-check"
 category: decision
 order: 2
 summary: "Surfaces the assumptions, alternatives considered, and reasoning trail alongside the output so the decision is auditable."

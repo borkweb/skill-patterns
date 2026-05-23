@@ -1,6 +1,7 @@
 ---
-title: "Question-first / clarification gate"
+title: "Clarification gate"
 slug: clarification-gate
+icon: "fa-solid fa-circle-question"
 category: control
 order: 4
 summary: "Makes the agent ask clarifying questions before producing output when the brief is ambiguous."
