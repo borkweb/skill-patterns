@@ -6,7 +6,15 @@ repo_url: "https://github.com/borkweb/skill-patterns"
 
 collections:
   patterns:
-    output: false
+    output: true
+    permalink: /patterns/:path/
+
+defaults:
+  - scope:
+      path: ""
+      type: patterns
+    values:
+      layout: pattern
 
 markdown: kramdown
 

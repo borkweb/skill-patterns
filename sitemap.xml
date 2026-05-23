@@ -1,0 +1,14 @@
+---
+permalink: /sitemap.xml
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>{{ '/' | absolute_url }}</loc></url>
+  <url><loc>{{ '/resources/' | absolute_url }}</loc></url>
+{% assign cats = site.data.categories | sort: "order" -%}
+{% for cat in cats -%}
+{% assign pats = site.patterns | where: "category", cat.key | sort: "order" -%}
+{% for p in pats %}  <url><loc>{{ p.url | absolute_url }}</loc></url>
+{% endfor -%}
+{% endfor -%}
+</urlset>

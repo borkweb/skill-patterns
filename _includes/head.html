@@ -1,7 +1,16 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>{% if page.title and page.title != site.title %}{{ page.title }} · {{ site.title }}{% else %}{{ site.title }}{% endif %}</title>
-<meta name="description" content="{{ page.description | default: site.description }}">
+{% assign page_title = page.title | default: site.title %}
+{% assign page_desc = page.summary | default: page.description | default: site.description %}
+<title>{% if page.title and page.title != site.title %}{{ page_title }} · {{ site.title }}{% else %}{{ site.title }}{% endif %}</title>
+<meta name="description" content="{{ page_desc | strip_newlines | escape }}">
+<link rel="canonical" href="{{ page.url | absolute_url }}">
+<meta property="og:type" content="{% if page.layout == 'pattern' %}article{% else %}website{% endif %}">
+<meta property="og:site_name" content="{{ site.title }}">
+<meta property="og:title" content="{{ page_title | escape }}">
+<meta property="og:description" content="{{ page_desc | strip_newlines | escape }}">
+<meta property="og:url" content="{{ page.url | absolute_url }}">
+<meta name="twitter:card" content="summary">
 <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
 <link rel="icon" href="{{ '/assets/favicon.svg' | relative_url }}" type="image/svg+xml">
 <script>
