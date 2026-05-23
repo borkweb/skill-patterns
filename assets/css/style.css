@@ -81,7 +81,7 @@ a:hover { text-decoration: underline; }
 .sidebar-cat a:hover { text-decoration: none; background: var(--bg-elevated); }
 .sidebar-cat a.is-active { background: var(--accent); color: var(--accent-contrast); font-weight: 600; }
 .sidebar-cat a.is-active:hover { background: var(--accent); }
-.sidebar-cat a i { display: inline-block; width: 1.15em; margin-right: 8px; text-align: center; color: var(--accent); }
+.sidebar-cat a i { display: inline-block; width: 1.15em; margin-right: 8px; text-align: center; color: var(--text-faint); }
 .sidebar-cat a.is-active i { color: inherit; }
 
 /* Content */
