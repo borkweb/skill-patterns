@@ -1,5 +1,5 @@
 ---
-title: "Signal/noise pre-commitment"
+title: "Signal vs. noise"
 slug: signal-noise-pre-commitment
 icon: "fa-solid fa-filter"
 category: grounding
