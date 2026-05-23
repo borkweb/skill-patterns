@@ -1,5 +1,5 @@
 ---
-title: "Trusted sources / grounding"
+title: "Trusted sources"
 slug: trusted-sources
 icon: "fa-solid fa-anchor"
 category: grounding
