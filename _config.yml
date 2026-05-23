@@ -1,0 +1,21 @@
+title: "Skill Patterns"
+description: "A catalog of reusable patterns for composing AI Skills."
+url: "https://skillpatterns.com"
+baseurl: ""
+repo_url: "https://github.com/borkweb/skill-patterns"
+
+collections:
+  patterns:
+    output: false
+
+markdown: kramdown
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - LICENSE
+  - docs/
+  - .superpowers/
+  - vendor/
+  - "*.pdf"
