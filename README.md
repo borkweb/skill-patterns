@@ -4,9 +4,10 @@ A clean, searchable catalog of reusable patterns for composing AI Skills — pub
 [skillpatterns.com](https://skillpatterns.com).
 
 The patterns are grouped by purpose (grounding, critique, decision-making, output shaping,
-control & composition), each with a definition, what it adds, and a copyable example prompt
-partial. Light/dark themes, client-side search, and deep-linkable anchors — all static, no JS
-dependencies.
+control & composition). A scannable card index links to a focused page per pattern, each with
+a definition, what it adds, and a copyable example prompt partial. Light/dark themes, instant
+full-text search, FontAwesome icons, and per-page SEO (metadata, canonical, Open Graph,
+`sitemap.xml`). Built with Jekyll — no CI.
 
 ## Local development
 
@@ -25,9 +26,9 @@ Each pattern is one Markdown file in `_patterns/`. Copy an existing one and edit
 ```yaml
 ---
 title: "My pattern"
-slug: my-pattern            # unique; becomes the #anchor and copy target
+slug: my-pattern            # unique; becomes the /patterns/<slug>/ URL and copy target
+icon: "fa-solid fa-star"    # any FontAwesome Free solid icon
 category: grounding         # one of the keys in _data/categories.yml
-order: 4                    # sort order within the category
 summary: "One-line definition."
 adds:
   - "What it adds, bullet one"
@@ -37,7 +38,8 @@ prompt: |
 ---
 ```
 
-Categories (titles, descriptions, order) live in `_data/categories.yml`.
+Patterns are listed alphabetically by title within their category. Categories (titles,
+descriptions, and their display order) live in `_data/categories.yml`.
 
 ## Deployment
 

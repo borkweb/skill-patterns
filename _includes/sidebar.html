@@ -5,7 +5,7 @@
       <div class="sidebar-cat" data-cat="{{ cat.key }}">
         <h2 class="sidebar-cat__title">{{ cat.title | escape }}</h2>
         <ul>
-          {% assign pats = site.patterns | where: "category", cat.key | sort: "order" %}
+          {% assign pats = site.patterns | where: "category", cat.key | sort_natural: "title" %}
           {% for p in pats %}
             <li><a href="{{ p.url | relative_url }}" data-link="{{ p.slug }}"{% if p.slug == page.slug %} class="is-active" aria-current="page"{% endif %}>{{ p.title }}</a></li>
           {% endfor %}
