@@ -1,11 +1,18 @@
 ---
 layout: default
 ---
-<div class="home">
-  {{ content }}
-  <div class="search search--home">
-    <input type="search" id="pattern-search" placeholder="Search patterns…" aria-label="Search patterns" autocomplete="off">
+<header class="hero">
+  <div class="hero__bg" aria-hidden="true"></div>
+  <div class="hero__inner">
+    <div class="hero__eyebrow mono">{{ site.patterns | size }} composable patterns</div>
+    {{ content }}
+    <div class="search search--home">
+      <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+      <input type="search" id="pattern-search" placeholder="Search patterns…" aria-label="Search patterns" autocomplete="off">
+    </div>
   </div>
+</header>
+<div class="home">
   {% assign cats = site.data.categories | sort: "order" %}
   {% for cat in cats %}
     <section class="cat-section" id="cat-{{ cat.key }}" data-cat="{{ cat.key }}">
