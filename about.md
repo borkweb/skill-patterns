@@ -17,15 +17,14 @@ They're **behavioral**, not domain-specific. A pattern doesn't know anything abo
 - **Composability.** Patterns stack. Combine a few and you've built a richer, more reliable Skill.
 - **Shared language.** "Add a clarification gate" or "run a premortem" is faster to say — and clearer — than re-explaining the idea every time.
 
-## The five categories
+## The categories
 
 Patterns are grouped by what they're *for*:
 
-- **Grounding & accuracy** — keep the agent tethered to truth and honest about what it knows.
-- **Critique & stress-testing** — find weaknesses before the work ships.
-- **Decision-making** — structure how choices get made and recorded.
-- **Output shaping** — control the form and structure of what comes out.
-- **Control & composition** — govern flow, stance, and how Skills combine.
+{% assign cats = site.data.categories | sort: "order" -%}
+{% for cat in cats -%}
+- **{{ cat.title | escape }}** — {{ cat.description | escape }}
+{% endfor -%}
 
 ## What each pattern gives you
 
