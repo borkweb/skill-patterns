@@ -44,23 +44,9 @@ Categories (titles, descriptions, order) live in `_data/categories.yml`.
 GitHub Pages builds this site natively (no Action). In repo **Settings → Pages**:
 set **Source: Deploy from a branch**, branch `main`, folder `/ (root)`.
 
-### DNS for the apex domain `skillpatterns.com`
-
-At your DNS registrar, create:
-
-| Type  | Host | Value |
-|-------|------|-------|
-| A     | @    | 185.199.108.153 |
-| A     | @    | 185.199.109.153 |
-| A     | @    | 185.199.110.153 |
-| A     | @    | 185.199.111.153 |
-| AAAA  | @    | 2606:50c0:8000::153 |
-| AAAA  | @    | 2606:50c0:8001::153 |
-| AAAA  | @    | 2606:50c0:8002::153 |
-| AAAA  | @    | 2606:50c0:8003::153 |
-| CNAME | www  | &lt;your-username&gt;.github.io |
-
-After DNS propagates, enable **Enforce HTTPS** in Settings → Pages.
+The custom domain is set via the `CNAME` file. Point your registrar's DNS at GitHub Pages
+following GitHub's [Managing a custom domain](https://docs.github.com/pages/configuring-a-custom-domain-for-your-github-pages-site)
+docs, then enable **Enforce HTTPS** in Settings → Pages.
 
 ## License
 
