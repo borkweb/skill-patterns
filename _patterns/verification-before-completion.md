@@ -1,5 +1,5 @@
 ---
-title: "Verification before completion"
+title: "Prove it works"
 slug: verification-before-completion
 icon: "fa-solid fa-circle-check"
 category: critique
