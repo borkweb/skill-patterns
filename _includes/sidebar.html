@@ -1,0 +1,19 @@
+<aside class="sidebar" id="sidebar">
+  <div class="search">
+    <input type="search" id="pattern-search" placeholder="Search patterns…" aria-label="Search patterns" autocomplete="off">
+  </div>
+  <nav class="sidebar-nav" aria-label="Patterns">
+    {% assign cats = site.data.categories | sort: "order" %}
+    {% for cat in cats %}
+      <div class="sidebar-cat" data-cat="{{ cat.key }}">
+        <h2 class="sidebar-cat__title">{{ cat.title | escape }}</h2>
+        <ul>
+          {% assign pats = site.patterns | where: "category", cat.key | sort: "order" %}
+          {% for p in pats %}
+            <li><a href="#{{ p.slug }}" data-link="{{ p.slug }}">{{ p.title }}</a></li>
+          {% endfor %}
+        </ul>
+      </div>
+    {% endfor %}
+  </nav>
+</aside>

@@ -1,0 +1,20 @@
+---
+layout: default
+---
+<div class="layout">
+  {%- include sidebar.html -%}
+  <main class="content" id="content">
+    {{ content }}
+    {% assign cats = site.data.categories | sort: "order" %}
+    {% for cat in cats %}
+      <section class="cat-section" id="cat-{{ cat.key }}" data-cat="{{ cat.key }}">
+        <h2 class="cat-section__title">{{ cat.title | escape }}</h2>
+        <p class="cat-section__desc">{{ cat.description | escape }}</p>
+        {% assign pats = site.patterns | where: "category", cat.key | sort: "order" %}
+        {% for p in pats %}
+          {% include pattern.html pattern=p %}
+        {% endfor %}
+      </section>
+    {% endfor %}
+  </main>
+</div>
