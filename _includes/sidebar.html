@@ -7,7 +7,7 @@
         <ul>
           {% assign pats = site.patterns | where: "category", cat.key | sort_natural: "title" %}
           {% for p in pats %}
-            <li><a href="{{ p.url | relative_url }}" data-link="{{ p.slug }}"{% if p.slug == page.slug %} class="is-active" aria-current="page"{% endif %}>{{ p.title }}</a></li>
+            <li><a href="{{ p.url | relative_url }}" data-link="{{ p.slug }}"{% if p.slug == page.slug %} class="is-active" aria-current="page"{% endif %}>{% if p.icon %}<i class="{{ p.icon }}" aria-hidden="true"></i>{% endif %}{{ p.title }}</a></li>
           {% endfor %}
         </ul>
       </div>
