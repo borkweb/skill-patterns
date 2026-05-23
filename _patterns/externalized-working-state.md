@@ -2,7 +2,7 @@
 title: "Externalized working state"
 slug: externalized-working-state
 icon: "fa-solid fa-table-list"
-category: control
+category: composition
 summary: "Keeps a live, structured state file — a running ledger of what's been checked or decided — that survives across steps and skills instead of relying on chat memory."
 adds:
   - "Writes progress and findings to a file, not just the conversation"

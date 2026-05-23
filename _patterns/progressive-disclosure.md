@@ -2,7 +2,7 @@
 title: "Progressive disclosure"
 slug: progressive-disclosure
 icon: "fa-solid fa-layer-group"
-category: control
+category: composition
 order: 5
 summary: "Loads only the context needed for the current sub-task, expanding as the work deepens."
 adds:
