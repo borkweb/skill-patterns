@@ -50,5 +50,4 @@ docs, then enable **Enforce HTTPS** in Settings → Pages.
 
 ## License
 
-MIT — see `LICENSE`. Patterns adapted from the talk *Skills & Building Your AI Playbook*
-(Automattic, AI Enablement 2026), plus a few later additions.
+MIT — see `LICENSE`.
