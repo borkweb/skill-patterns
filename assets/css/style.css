@@ -132,8 +132,15 @@ a:hover { text-decoration: underline; }
 .page { max-width: var(--content-max); margin: 0 auto; padding: 40px 24px; }
 .page h1 { font-size: 30px; font-weight: 800; letter-spacing: -.02em; }
 .page h2 { margin-top: 28px; font-size: 15px; text-transform: uppercase; letter-spacing: .05em; color: var(--text-faint); }
-.page ul { padding-left: 18px; }
+.page ul, .page ol { padding-left: 20px; }
 .page li { margin: 8px 0; color: var(--text-muted); }
+.page p { color: var(--text-muted); line-height: 1.6; }
+.page strong { color: var(--text); }
+.page a { color: var(--accent); }
+.page code { font-family: var(--mono); font-size: .9em; background: var(--bg-elevated); padding: 1px 6px; border-radius: 5px; color: var(--text); }
+.page pre { background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 10px; padding: 14px 16px; overflow-x: auto; line-height: 1.55; }
+.page pre code { background: none; padding: 0; font-size: 12.5px; color: var(--text); }
+.page blockquote { border-left: 3px solid var(--border-strong); margin: 16px 0; padding: 6px 0 6px 16px; color: var(--text-muted); }
 
 /* Footer */
 .site-footer { border-top: 1px solid var(--border); padding: 28px 24px; text-align: center; color: var(--text-faint); font-size: 13px; }
