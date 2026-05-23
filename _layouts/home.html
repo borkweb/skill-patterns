@@ -1,20 +1,21 @@
 ---
 layout: default
 ---
-<div class="layout">
-  {%- include sidebar.html -%}
-  <main class="content" id="content">
-    {{ content }}
-    {% assign cats = site.data.categories | sort: "order" %}
-    {% for cat in cats %}
-      <section class="cat-section" id="cat-{{ cat.key }}" data-cat="{{ cat.key }}">
-        <h2 class="cat-section__title">{{ cat.title | escape }}</h2>
-        <p class="cat-section__desc">{{ cat.description | escape }}</p>
+<div class="home">
+  {{ content }}
+  <div class="search search--home">
+    <input type="search" id="pattern-search" placeholder="Search patterns…" aria-label="Search patterns" autocomplete="off">
+  </div>
+  {% assign cats = site.data.categories | sort: "order" %}
+  {% for cat in cats %}
+    <section class="cat-section" id="cat-{{ cat.key }}" data-cat="{{ cat.key }}">
+      <h2 class="cat-section__title">{{ cat.title | escape }}</h2>
+      <p class="cat-section__desc">{{ cat.description | escape }}</p>
+      <div class="card-grid">
         {% assign pats = site.patterns | where: "category", cat.key | sort: "order" %}
-        {% for p in pats %}
-          {% include pattern.html pattern=p %}
-        {% endfor %}
-      </section>
-    {% endfor %}
-  </main>
+        {% for p in pats %}{% include pattern-card.html pattern=p %}{% endfor %}
+      </div>
+    </section>
+  {% endfor %}
+  <p class="no-results is-hidden" id="no-results">No patterns match your search.</p>
 </div>

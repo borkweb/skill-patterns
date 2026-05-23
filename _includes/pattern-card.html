@@ -1,0 +1,6 @@
+{% assign p = include.pattern %}
+{% capture searchtext %}{{ p.title }} {{ p.summary }} {{ p.adds | join: ' ' }} {{ p.prompt }}{% endcapture %}
+<a class="pcard" href="{{ p.url | relative_url }}" data-search="{{ searchtext | strip_newlines | downcase | escape }}">
+  <h3 class="pcard__title">{{ p.title }}</h3>
+  <p class="pcard__summary">{{ p.summary }}</p>
+</a>
