@@ -3,8 +3,8 @@
 A clean, searchable catalog of reusable patterns for composing AI Skills — published at
 [skillpatterns.com](https://skillpatterns.com).
 
-The patterns are grouped by purpose (grounding, critique, decision-making, output shaping,
-control & composition). A scannable card index links to a focused page per pattern, each with
+The patterns are grouped by purpose (grounding, decision-making, output shaping, critique,
+control, and composition). A scannable card index links to a focused page per pattern, each with
 a definition, what it adds, and a copyable example prompt partial. Light/dark themes, instant
 full-text search, FontAwesome icons, and per-page SEO (metadata, canonical, Open Graph,
 `sitemap.xml`). Built with Jekyll — no CI.
