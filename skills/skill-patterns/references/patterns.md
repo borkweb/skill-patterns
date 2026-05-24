@@ -2,7 +2,7 @@
 
 # Skill Patterns
 
-> Reusable, composable techniques for shaping how an AI agent behaves — 34 patterns across 6 categories. When creating or improving a Skill, apply the patterns whose purpose matches the task; each entry includes an example prompt you can adapt. Most skills use 2–4 patterns — don't over-apply. Site: https://skillpatterns.ai/
+> Reusable, composable techniques for shaping how an AI agent behaves — 33 patterns across 6 categories. When creating or improving a Skill, apply the patterns whose purpose matches the task; each entry includes an example prompt you can adapt. Most skills use 2–4 patterns — don't over-apply. Site: https://skillpatterns.ai/
 
 ## Grounding & accuracy
 Keep the agent tethered to truth and honest about what it knows.
@@ -107,9 +107,9 @@ Has the agent actively seek evidence that would disprove its current hypothesis,
 - URL: https://skillpatterns.ai/patterns/disconfirmation/
 
 ### Encoded reasoning
-Bakes review rubrics, validation steps, and quality checks into how the Skill operates.
-- What it adds: Runs outputs against a defined rubric before returning them; Surfaces which criteria passed, failed, or are uncertain; Catches predictable failure modes the team has seen before.
-- Example prompt: Before returning output, check the work against these criteria: [rubric items]. Report which criteria passed, failed, or are uncertain. Don't return work that fails [hard criteria] — revise and retry. Surface the rubric results alongside the output so I can see the reasoning.
+Bakes the review rubric and quality gates into the Skill — it drafts, checks its own work against the criteria, and revises before returning.
+- What it adds: Runs output against a defined rubric — or, absent one, the brief and what a strong reviewer would notice; Reports which criteria passed, failed, or are uncertain, and names the weakest reasoning and most fragile assumption; Holds back work that fails a hard criterion — revises, retries, and returns a note on what changed.
+- Example prompt: Before returning [output], check your own work against these criteria: [rubric items — or, absent a rubric, the original brief and what a strong reviewer would notice]. Report which criteria passed, failed, or are uncertain, and name the weakest reasoning and the most fragile assumption. Don't return work that fails a hard criterion — revise and retry. Return the revised output with a brief note on what changed and why.
 - URL: https://skillpatterns.ai/patterns/encoded-reasoning/
 
 ### Failure mode preloading
@@ -135,12 +135,6 @@ Before claiming the work is done, the Skill proves it actually happened — runn
 - What it adds: Runs the verification before saying 'done', not after; Shows the evidence (output, test result, screenshot) behind any success claim; Treats 'this looks finished' as a prompt to test, not to stop.
 - Example prompt: Before you claim [task] is complete, actually verify it: run it, check the output, and show me the evidence. Don't say "done", "fixed", or "working" without the result that proves it. If you can't verify a claim, mark it unverified rather than asserting it. Treat "this looks finished" as a signal to test, not to stop.
 - URL: https://skillpatterns.ai/patterns/verification-before-completion/
-
-### Self-critique
-Has the agent review its own output against criteria, identify weaknesses, and revise before returning.
-- What it adds: Produces a first draft, then critiques it against the brief; Names the weakest reasoning and the most fragile assumption; Returns the revised output with a note on what changed and why.
-- Example prompt: After producing [output], step back and critique your own work against [criteria: the original brief, the rubric, what a strong reviewer would notice]. Identify the weakest reasoning, the most fragile assumption, and the part most likely to be wrong. Revise. Return the revised output along with a brief note on what changed and why.
-- URL: https://skillpatterns.ai/patterns/self-critique/
 
 ### Self-tuning
 After a run, the Skill proposes concrete edits to its own instructions when they were unclear or incomplete — and stays silent when nothing needs changing.
