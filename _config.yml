@@ -3,6 +3,7 @@ description: "A catalog of reusable patterns for composing AI Skills."
 url: "https://skillpatterns.ai"
 baseurl: ""
 repo_url: "https://github.com/borkweb/skill-patterns"
+google_analytics: "G-X6BTVP0R5T"
 
 collections:
   patterns:
