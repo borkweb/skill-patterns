@@ -6,7 +6,7 @@ layout: default
   <main class="content" id="content">
     <a class="back-link" href="{{ '/' | relative_url }}">← All patterns</a>
     {% assign cat = site.data.categories | where: "key", page.category | first %}
-    <div class="pattern-detail">
+    <div class="pattern-detail" data-cat="{{ page.category }}">
       <div class="pattern__eyebrow"><a href="{{ '/#cat-' | append: page.category | relative_url }}">{{ cat.title | escape }}</a></div>
       {% include pattern.html pattern=page %}
     </div>

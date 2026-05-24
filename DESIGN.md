@@ -35,6 +35,30 @@ The `--prompt-*` tokens style the example-prompt card (a warm "code" surface).
 clears 4.5:1 on both `--bg` and `--bg-elevated`. Do not introduce a lighter gray
 for text. Verify any new text/background pair at ≥4.5:1 (≥3:1 for ≥18px bold).
 
+### Category accents (`--cat`)
+
+Color is **wayfinding**: each of the six categories owns a hue, set as a `--cat`
+variable on `[data-cat="<key>"]` (the home section, sidebar group, jump-nav chip,
+and pattern-detail wrapper). Because custom properties inherit, descendants just
+reference `var(--cat, var(--accent))` — section titles, sidebar labels, chip text,
+card icon tiles, the detail eyebrow/title/bullets, and the active-pattern tint all
+pick it up automatically.
+
+| Category | Light | Dark |
+|----------|-------|------|
+| `grounding` | `#3858E9` | `#6b8aff` |
+| `decision` | `#0B7D6F` | `#3fd6c0` |
+| `output` | `#683FE6` | `#a48bff` |
+| `critique` | `#C5314C` | `#ff7d94` |
+| `control` | `#8F5E12` | `#e0a64a` |
+| `composition` | `#23783A` | `#5fc06f` |
+
+Light hues are tuned to clear **4.5:1 on `--bg-elevated`** (the chip background, the
+strictest case); dark hues clear it comfortably. Adding/recoloring a category means
+adding a `--cat` pair here and re-verifying contrast. Tints (icon tiles, active
+state) are derived with `color-mix(in srgb, var(--cat) N%, …)`, so they track the
+hue automatically — never hard-code a tint.
+
 ## Typography
 
 - **Sans:** system stack (`--sans`). **Mono:** system mono (`--mono`), used for the

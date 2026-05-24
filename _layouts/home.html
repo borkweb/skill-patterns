@@ -15,7 +15,7 @@ layout: default
 <div class="home">
   {% assign cats = site.data.categories | sort: "order" %}
   <nav class="cat-nav" aria-label="Jump to category">
-    {% for cat in cats %}<a href="#cat-{{ cat.key }}">{{ cat.title | escape }}</a>{% endfor %}
+    {% for cat in cats %}<a href="#cat-{{ cat.key }}" data-cat="{{ cat.key }}">{{ cat.title | escape }}</a>{% endfor %}
   </nav>
   {% for cat in cats %}
     <section class="cat-section" id="cat-{{ cat.key }}" data-cat="{{ cat.key }}">
