@@ -19,6 +19,16 @@ Most skills need only 2–4 patterns; it keeps things lean and asks before anyth
 
 ## Install
 
+Built on the [Agent Skills open standard](https://agentskills.io), so the skill runs **unmodified** on Claude Code, Codex CLI, Gemini CLI, Cursor, GitHub Copilot, and 25+ other agents — the `.claude-plugin/` manifests just add Claude Code's marketplace install on top; other agents ignore them.
+
+### Easiest — any agent
+
+```
+npx skills add https://github.com/borkweb/skill-patterns --skill skill-patterns
+```
+
+Installs the skill into the right location for whichever agent you're using.
+
 ### Claude Code (plugin marketplace)
 
 ```
@@ -28,15 +38,17 @@ Most skills need only 2–4 patterns; it keeps things lean and asks before anyth
 
 It then activates automatically when you build a Skill, or invoke it with `/skill-patterns:skill-patterns`.
 
-### Codex, Gemini, Cursor, and other agents (npx skills)
+### Manual — copy the skill folder
 
-```
-npx skills add https://github.com/borkweb/skill-patterns --skill skill-patterns
-```
+Copy `skills/skill-patterns/` into your agent's skills directory:
 
-### Manual (Claude Code)
+| Agent | Personal | Project |
+|---|---|---|
+| Claude Code | `~/.claude/skills/` | `.claude/skills/` |
+| Codex CLI | `~/.codex/skills/` | `.codex/skills/` |
+| Gemini CLI | `~/.gemini/skills/` | `.gemini/skills/` |
 
-Copy `skills/skill-patterns/` into `~/.claude/skills/` (personal) or a project's `.claude/skills/`.
+Codex and Gemini CLI also read the shared `.agents/skills/` alias.
 
 ## What's inside
 

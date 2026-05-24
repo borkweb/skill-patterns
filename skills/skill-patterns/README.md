@@ -31,19 +31,17 @@ npx skills find skill-patterns
 
 The `npx skills` ecosystem installs into Claude Code, Cursor, Codex, Gemini CLI, and other supported agents.
 
-### Manual (Claude Code)
+### Manual — any agent
 
-Copy this skill's directory into your skills location:
+This skill follows the [Agent Skills open standard](https://agentskills.io), so the same `SKILL.md` works across agents unmodified. Copy the `skill-patterns` directory into your agent's skills folder:
 
 ```bash
-# Personal (available everywhere)
-cp -R skill-patterns ~/.claude/skills/skill-patterns
-
-# or Project-scoped (shared with the repo)
-cp -R skill-patterns .claude/skills/skill-patterns
+cp -R skill-patterns ~/.claude/skills/skill-patterns    # Claude Code
+cp -R skill-patterns ~/.codex/skills/skill-patterns     # Codex CLI
+cp -R skill-patterns ~/.gemini/skills/skill-patterns    # Gemini CLI
 ```
 
-Claude Code auto-discovers it — no restart needed for project skills.
+Use the project-scoped path instead (`.claude/skills/`, `.codex/skills/`, `.gemini/skills/`) to share it within a repo. Codex and Gemini CLI also read the shared `.agents/skills/` alias. No restart needed for project skills.
 
 ## Using it
 
