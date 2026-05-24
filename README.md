@@ -24,7 +24,7 @@ Built on the [Agent Skills open standard](https://agentskills.io), so the skill 
 ### Easiest — any agent
 
 ```
-npx skills add https://github.com/borkweb/skill-patterns --skill skill-patterns
+npx skills add borkweb/skill-patterns --skill skill-patterns
 ```
 
 Installs the skill into the right location for whichever agent you're using.
