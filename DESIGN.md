@@ -116,3 +116,4 @@ inconsistently across platforms.
 3. Visible `:focus-visible` ring (inherited globally — don't remove it).
 4. Decorative icons get `aria-hidden="true"`; icon-only controls get `aria-label`.
 5. Any motion respects `prefers-reduced-motion`.
+
