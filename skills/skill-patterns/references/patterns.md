@@ -2,7 +2,7 @@
 
 # Skill Patterns
 
-> Reusable, composable techniques for shaping how an AI agent behaves — 33 patterns across 6 categories. When creating or improving a Skill, apply the patterns whose purpose matches the task; each entry includes an example prompt you can adapt. Most skills use 2–4 patterns — don't over-apply. Site: https://skillpatterns.ai/
+> Reusable, composable techniques for shaping how an AI agent behaves — 34 patterns across 6 categories. When creating or improving a Skill, apply the patterns whose purpose matches the task; each entry includes an example prompt you can adapt. Most skills use 2–4 patterns — don't over-apply. Site: https://skillpatterns.ai/
 
 ## Grounding & accuracy
 Keep the agent tethered to truth and honest about what it knows.
@@ -141,6 +141,12 @@ Has the agent review its own output against criteria, identify weaknesses, and r
 - What it adds: Produces a first draft, then critiques it against the brief; Names the weakest reasoning and the most fragile assumption; Returns the revised output with a note on what changed and why.
 - Example prompt: After producing [output], step back and critique your own work against [criteria: the original brief, the rubric, what a strong reviewer would notice]. Identify the weakest reasoning, the most fragile assumption, and the part most likely to be wrong. Revise. Return the revised output along with a brief note on what changed and why.
 - URL: https://skillpatterns.ai/patterns/self-critique/
+
+### Self-tuning
+After a run, the Skill flags its own ambiguous or missing instructions and proposes concrete edits to itself.
+- What it adds: Notices where its own instructions were unclear, incomplete, or forced a workaround; Proposes a specific edit — quotes the line and gives the replacement — not a vague 'could be better'; Distinguishes a clean run from one that surfaced an improvement worth making.
+- Example prompt: After completing [task], reflect on the instructions you just followed. If anything was ambiguous, missing, or forced a workaround, propose a specific edit to this Skill — quote the line and give the replacement. If the run was clean, say so and suggest nothing. Don't edit the skill yourself; surface the proposal for review.
+- URL: https://skillpatterns.ai/patterns/self-tuning/
 
 ## Control
 Govern how the agent behaves within a task — when it pauses, asks, stops, and the stance it takes.
