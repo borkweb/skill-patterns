@@ -27,9 +27,11 @@
   if (search && cards.length) {
     var sections = Array.prototype.slice.call(document.querySelectorAll('.cat-section'));
     var noResults = document.getElementById('no-results');
+    var noResultsQ = document.getElementById('no-results-q');
+    var searchReset = document.getElementById('search-reset');
 
-    var applyFilter = function (q) {
-      q = (q || '').trim().toLowerCase();
+    var applyFilter = function (raw) {
+      var q = (raw || '').trim().toLowerCase();
       var anyVisible = false;
       cards.forEach(function (c) {
         var match = q === '' || (c.getAttribute('data-search') || '').indexOf(q) !== -1;
@@ -39,18 +41,27 @@
       sections.forEach(function (s) {
         s.classList.toggle('is-hidden', s.querySelectorAll('.pcard:not(.is-hidden)').length === 0);
       });
-      if (noResults) { noResults.classList.toggle('is-hidden', anyVisible); }
+      if (noResults) {
+        noResults.classList.toggle('is-hidden', anyVisible);
+        if (!anyVisible && noResultsQ) { noResultsQ.textContent = (raw || '').trim(); }
+      }
+    };
+
+    var resetSearch = function () {
+      search.value = '';
+      applyFilter('');
+      search.focus();
     };
 
     search.addEventListener('input', function () { applyFilter(search.value); });
+    if (searchReset) { searchReset.addEventListener('click', resetSearch); }
 
     document.addEventListener('keydown', function (e) {
       if (e.key === '/' && document.activeElement !== search) {
         e.preventDefault();
         search.focus();
       } else if (e.key === 'Escape' && document.activeElement === search) {
-        search.value = '';
-        applyFilter('');
+        resetSearch();
       }
     });
   }

@@ -14,6 +14,9 @@ layout: default
 </header>
 <div class="home">
   {% assign cats = site.data.categories | sort: "order" %}
+  <nav class="cat-nav" aria-label="Jump to category">
+    {% for cat in cats %}<a href="#cat-{{ cat.key }}">{{ cat.title | escape }}</a>{% endfor %}
+  </nav>
   {% for cat in cats %}
     <section class="cat-section" id="cat-{{ cat.key }}" data-cat="{{ cat.key }}">
       <h2 class="cat-section__title">{{ cat.title | escape }}</h2>
@@ -24,5 +27,5 @@ layout: default
       </div>
     </section>
   {% endfor %}
-  <p class="no-results is-hidden" id="no-results">No patterns match your search.</p>
+  <p class="no-results is-hidden" id="no-results">No patterns match “<span id="no-results-q"></span>”. <button type="button" class="no-results__reset" id="search-reset">Clear search</button> and browse all {{ site.patterns | size }}.</p>
 </div>
