@@ -98,7 +98,7 @@ Find weaknesses before the work ships.
 Pits a challenger persona or parallel agent against the work to expose weaknesses before it ships.
 - What it adds: Argues the strongest case against the proposal, with reasoning; Surfaces assumptions that wouldn't survive scrutiny; Forces defense of choices instead of quiet acceptance.
 - Example prompt: Before finalizing [output], take the role of [adversary: skeptical reviewer, hostile architect, opposing counsel, competitor's CTO]. Argue the strongest case against the proposal. Identify the assumptions most likely to fail, the evidence that's missing, and the decisions that would look wrong in hindsight. Return the pushback and the original work side by side.
-- URL: https://skillpatterns.ai/patterns/adversarial-push-back/
+- URL: https://skillpatterns.ai/patterns/adversarial-pushback/
 
 ### Disconfirmation
 Has the agent actively seek evidence that would disprove its current hypothesis, and state what would change its mind.
