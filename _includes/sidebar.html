@@ -1,5 +1,9 @@
 <aside class="sidebar" id="sidebar">
-  <nav class="sidebar-nav" aria-label="Patterns">
+  <button class="sidebar-toggle" id="sidebar-toggle" type="button" aria-expanded="false" aria-controls="sidebar-nav">
+    <span>Browse patterns</span>
+    <span class="sidebar-toggle__icon" aria-hidden="true"></span>
+  </button>
+  <nav class="sidebar-nav" id="sidebar-nav" aria-label="Patterns">
     {% assign cats = site.data.categories | sort: "order" %}
     {% for cat in cats %}
       <div class="sidebar-cat" data-cat="{{ cat.key }}">

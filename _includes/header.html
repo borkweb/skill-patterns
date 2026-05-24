@@ -1,9 +1,9 @@
 <header class="site-header">
   <a class="brand" href="{{ '/' | relative_url }}">Skill<span>Patterns</span></a>
   <nav class="header-nav" aria-label="Primary">
-    <a href="{{ '/about/' | relative_url }}">What are these?</a>
-    <a href="{{ '/using/' | relative_url }}">How to use</a>
-    <a href="{{ site.repo_url }}" rel="noopener">GitHub</a>
+    <a href="{{ '/about/' | relative_url }}"><span class="nav-full">What are these?</span><span class="nav-short">What?</span></a>
+    <a href="{{ '/using/' | relative_url }}"><span class="nav-full">How to use</span><span class="nav-short">Using</span></a>
+    <a href="{{ site.repo_url }}" rel="noopener" aria-label="GitHub"><i class="fa-brands fa-github" aria-hidden="true"></i></a>
     <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle dark mode">
       <span class="theme-toggle__icon" aria-hidden="true"></span>
     </button>

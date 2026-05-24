@@ -11,6 +11,16 @@
     });
   }
 
+  /* Sidebar collapse (mobile) */
+  var sidebar = document.getElementById('sidebar');
+  var sidebarToggle = document.getElementById('sidebar-toggle');
+  if (sidebar && sidebarToggle) {
+    sidebarToggle.addEventListener('click', function () {
+      var open = sidebar.classList.toggle('is-open');
+      sidebarToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+  }
+
   /* Index search — filters cards by full-text data-search attribute */
   var search = document.getElementById('pattern-search');
   var cards = Array.prototype.slice.call(document.querySelectorAll('.pcard'));
