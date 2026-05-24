@@ -16,7 +16,7 @@ Map the skill's behavior to candidate patterns. Most skills need **2–4**; don'
 | feeds another system (machine-readable) | Schema-locked output |
 | encodes one tool or library's conventions | Convention wrapper |
 | should match a particular voice or style | Exemplars over instruction |
-| is a multi-step or multi-skill workflow | Decomposition, Workflows as superset, Externalized working state, Progressive disclosure |
+| is a multi-step or multi-skill workflow | Decomposition, Skill chaining, Externalized working state, Progressive disclosure |
 | tends to produce people-pleasing answers | Anti-sycophancy |
 | benefits from a specific expert stance | Role priming |
 
@@ -24,4 +24,4 @@ Map the skill's behavior to candidate patterns. Most skills need **2–4**; don'
 
 - **Default-apply** (no need to ask): Scope guardrails + Clarification gate when the skill acts or takes ambiguous input; Trusted sources when it's fact-dependent; Schema-locked output when its output is machine-read.
 - **Propose then confirm** (adds cost or changes the interaction): Adversarial push back, Premortem, Council-style debate, multi-pass review.
-- **Composition patterns** (Decomposition, Workflows as superset, Externalized working state, Progressive disclosure, Long-term memory) apply to multi-step or cross-session skills — not simple single-shot ones.
+- **Composition patterns** (Decomposition, Skill chaining, Externalized working state, Progressive disclosure, Long-term memory) apply to multi-step or cross-session skills — not simple single-shot ones.

@@ -214,8 +214,8 @@ Loads only the context needed for the current sub-task, expanding as the work de
 - Example prompt: Work through [task] in stages, loading only the context each stage needs. Start with the high-level [overview / index / table of contents]; pull in the detailed [files / sections / data] only when a step actually requires them. Don't front-load everything. When you move to a new sub-task, say what additional context you're bringing in and why, so the scope stays visible.
 - URL: https://skillpatterns.ai/patterns/progressive-disclosure/
 
-### Workflows as superset
+### Skill chaining
 Composes this Skill with others into a sequenced flow.
 - What it adds: Triggers other Skills in a defined order; Passes outputs from one stage as inputs to the next; Surfaces workflow state so you can see where you are in the chain.
 - Example prompt: Run this as a workflow: [Skill 1] → [Skill 2] → [Skill 3]. Pass the output of each stage as input to the next. After each stage, summarize what was produced and confirm before moving on. If a stage fails its checks, stop and surface the issue rather than continuing.
-- URL: https://skillpatterns.ai/patterns/workflows-as-superset/
+- URL: https://skillpatterns.ai/patterns/skill-chaining/
