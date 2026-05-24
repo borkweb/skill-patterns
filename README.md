@@ -4,8 +4,6 @@ A Claude / Codex / Gemini plugin that helps you **build better Skills**. When yo
 
 It ships the **skill-patterns** skill, backed by a catalog of 34 reusable behavioral patterns. Browse the full catalog at **[skillpatterns.ai](https://skillpatterns.ai)**.
 
-> **Branches:** this `main` branch is the installable plugin. The website that publishes [skillpatterns.ai](https://skillpatterns.ai) lives on the [`gh-pages`](https://github.com/borkweb/skill-patterns/tree/gh-pages) branch.
-
 ## What it does
 
 When you start writing or editing a `SKILL.md`, the skill:
