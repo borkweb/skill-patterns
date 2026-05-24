@@ -16,6 +16,32 @@ permalink: /using/
 
 That's it. A pattern is just a well-worded instruction; the catalog saves you from rediscovering the wording every time.
 
+## Choosing the right patterns
+
+Not sure which to reach for? Match the *behavior of the skill* to a pattern:
+
+| If the skill… | Reach for… |
+|---|---|
+| relies on facts that must be correct | Trusted sources, Confidence calibration |
+| pulls from multiple sources or feeds | Graceful degradation, Signal vs. noise |
+| often gets vague or ambiguous briefs | Clarification gate, Question sharpening |
+| makes a recommendation or decision | Bounded option generation, Decision capture, Stakes-scaled rigor |
+| reviews or evaluates work | Encoded reasoning, Gap-to-target scoring, Self-critique |
+| must catch errors before it ships | Prove it works, Premortem, Failure mode preloading, Disconfirmation |
+| takes an irreversible or high-stakes action | Human in the loop, Scope guardrails |
+| runs autonomously or for a long time | Codified judgment, Circuit breaker, Long-term memory |
+| produces a deliverable in a set format | Artifact creation, Format projection |
+| feeds another system (machine-readable) | Schema-locked output |
+| encodes one tool or library's conventions | Convention wrapper |
+| should match a particular voice or style | Exemplars over instruction |
+| is a multi-step or multi-skill workflow | Decomposition, Workflows as superset, Externalized working state, Progressive disclosure |
+| tends to produce people-pleasing answers | Anti-sycophancy |
+| benefits from a specific expert stance | Role priming |
+
+Most skills need **two to four** of these — composing more usually makes a skill worse, not better.
+
+**Building with an AI?** You don't have to pick at all. Point it at the catalog — [`/llms.txt`]({{ '/llms.txt' | relative_url }}) or [`/patterns.json`]({{ '/patterns.json' | relative_url }}) — and ask it to apply the patterns your skill's purpose calls for. It can select and weave them in, then show you what it chose so you can adjust.
+
 ## Fill in the brackets
 
 The `[brackets]` are slots, not literal text. The Convention wrapper prompt, for instance, starts:
