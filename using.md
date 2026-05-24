@@ -9,15 +9,29 @@ permalink: /using/
 
 Most people build a Skill *with* an AI — so the fastest way to use these patterns is to let the AI apply them for you. Prefer to place them by hand? That works too, and the rest of this page walks through it.
 
-## Build with an AI
+## Get the Skill
 
-> **Point your agent at the catalog** — [`/llms.txt`]({{ '/llms.txt' | relative_url }}) or [`/patterns.json`]({{ '/patterns.json' | relative_url }}) — and ask it to apply the patterns your skill's purpose calls for. It selects and weaves them in, then shows you what it chose so you can adjust.
->
-> **Even easier:** install the **skill-patterns** skill — `npx skills add https://github.com/borkweb/skill-patterns --skill skill-patterns` — and it applies the right patterns automatically whenever you build a Skill.
+Using a Skill makes pattern selection a breeze. Grab it and add to your Skill creation workflow.
 
-That's the whole point of the catalog: you shouldn't have to hand-pick. The sections below are for when you *want* to.
+```
+npx skills add borkweb/skill-patterns --skill skill-patterns
+```
 
-## The basic move
+## Build with AI
+
+### Using the Skill
+
+The easiest way to select patterns is using the Skill, which will apply the right patterns automatically whenever you build a Skill.
+
+**Example prompt to create a Skill:**
+
+> Create a Skill with /skill-creator and /skill-patterns that accepts an article URL, helps me craft my own narrative, then creates an X post and/or a LinkedIn post.
+
+### Pointing your agent at the catalog
+
+If you don't want to use the Skill, but you still want your agent to auto-select patterns for you, you can point the agent at the catalog: [`/llms.txt`]({{ '/llms.txt' | relative_url }}) or [`/patterns.json`]({{ '/patterns.json' | relative_url }}) — and ask it to apply the patterns your skill's purpose calls for. It selects and weaves them in, then shows you what it chose so you can adjust.
+
+## Build manually
 
 1. Find a pattern that matches the behavior you want.
 2. Copy its **example prompt partial**.
@@ -26,11 +40,11 @@ That's the whole point of the catalog: you shouldn't have to hand-pick. The sect
 
 That's it. A pattern is just a well-worded instruction; the catalog saves you from rediscovering the wording every time.
 
-## Choosing patterns
+### Choosing patterns
 
 Not sure which to grab? [Browse the catalog]({{ '/' | relative_url }}) — it's grouped by purpose, so skim the category that fits your skill's job. Most skills need only **two to four** patterns; composing more usually makes a skill worse. Or skip the picking entirely and let an AI choose (above).
 
-## Fill in the brackets
+### Fill in the brackets
 
 The `[brackets]` are slots, not literal text. The Scoped conventions prompt, for instance, starts:
 
@@ -38,7 +52,7 @@ The `[brackets]` are slots, not literal text. The Scoped conventions prompt, for
 
 Replace `[tool / library / domain]` with `FastAPI`, swap in your actual conventions, and it's ready.
 
-## Compose several
+### Compose several
 
 Patterns stack — most real Skills use two or three. Pick them in the order the work flows. A "draft a proposal" Skill might combine three:
 
