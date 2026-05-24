@@ -13,12 +13,6 @@ Requires the agent to mark which parts of its output it's confident about and wh
 - Example prompt: As you produce [output], mark each substantive claim with a confidence level: high (verified against a source or directly observable), medium (inferred from pattern or adjacent evidence), low (filling a gap, best guess, please verify). For low-confidence claims, briefly note what would raise the confidence — a source to check, a test to run, a person to ask. Don't smooth out uncertainty in the final wording; if it's a guess, it should read like one.
 - URL: https://skillpatterns.ai/patterns/confidence-calibration/
 
-### Convention wrapper
-Packages a specific tool, library, or domain's conventions as on-demand knowledge the Skill applies only when that area is in play.
-- What it adds: Encodes the right way to use a specific tool or library, not generic advice; Activates only when the task actually touches that area; Keeps the detailed reference out of context until it's needed.
-- Example prompt: When the task involves [tool / library / domain], follow these conventions: [rules, or point to a reference doc]. Use this specific guidance rather than generic best practices, and only pull in the detailed reference when the task actually touches [area]. If a convention here conflicts with your default approach, this guidance wins. If the task is outside [area], ignore this.
-- URL: https://skillpatterns.ai/patterns/convention-wrapper/
-
 ### Exemplars over instruction
 Anchors the Skill's output in concrete examples of "good" rather than describing it in rules.
 - What it adds: Matches the shape, voice, and structure of provided examples; Surfaces which exemplar it drew from when the choice is ambiguous; Asks for a new exemplar when the work falls outside the set.
@@ -30,6 +24,12 @@ When an input or source is unavailable, the Skill produces the best partial resu
 - What it adds: Continues with available inputs when a source fails; Names which sources were unavailable and what they'd have affected; Marks the result as partial rather than presenting it as complete.
 - Example prompt: If a required input or source is unavailable or errors out, don't block or silently fill the gap. Proceed with what you have, clearly mark the result as partial, and list which sources were missing and what they affected. Only hard-stop if a missing input makes the whole task meaningless — and say which one.
 - URL: https://skillpatterns.ai/patterns/graceful-degradation/
+
+### Scoped conventions
+Packages a specific tool, library, or domain's conventions as on-demand knowledge the Skill applies only when that area is in play.
+- What it adds: Encodes the right way to use a specific tool or library, not generic advice; Activates only when the task actually touches that area; Keeps the detailed reference out of context until it's needed.
+- Example prompt: When the task involves [tool / library / domain], follow these conventions: [rules, or point to a reference doc]. Use this specific guidance rather than generic best practices, and only pull in the detailed reference when the task actually touches [area]. If a convention here conflicts with your default approach, this guidance wins. If the task is outside [area], ignore this.
+- URL: https://skillpatterns.ai/patterns/scoped-conventions/
 
 ### Signal vs. noise
 Forces an explicit list of which sources count as signal versus noise before analysis — including the noise you're most tempted to lean on anyway.
@@ -94,7 +94,7 @@ Forces output into a strict, validated structure and repairs or rejects anything
 ## Critique & stress-testing
 Find weaknesses before the work ships.
 
-### Adversarial push back
+### Adversarial pushback
 Pits a challenger persona or parallel agent against the work to expose weaknesses before it ships.
 - What it adds: Argues the strongest case against the proposal, with reasoning; Surfaces assumptions that wouldn't survive scrutiny; Forces defense of choices instead of quiet acceptance.
 - Example prompt: Before finalizing [output], take the role of [adversary: skeptical reviewer, hostile architect, opposing counsel, competitor's CTO]. Argue the strongest case against the proposal. Identify the assumptions most likely to fail, the evidence that's missing, and the decisions that would look wrong in hindsight. Return the pushback and the original work side by side.
@@ -134,7 +134,7 @@ Skill imagines the work has already failed and reasons backward to why.
 Before claiming the work is done, the Skill proves it actually happened — running it, checking output, showing evidence — instead of asserting completion.
 - What it adds: Runs the verification before saying 'done', not after; Shows the evidence (output, test result, screenshot) behind any success claim; Treats 'this looks finished' as a prompt to test, not to stop.
 - Example prompt: Before you claim [task] is complete, actually verify it: run it, check the output, and show me the evidence. Don't say "done", "fixed", or "working" without the result that proves it. If you can't verify a claim, mark it unverified rather than asserting it. Treat "this looks finished" as a signal to test, not to stop.
-- URL: https://skillpatterns.ai/patterns/verification-before-completion/
+- URL: https://skillpatterns.ai/patterns/prove-it-works/
 
 ### Self-tuning
 After a run, the Skill proposes concrete edits to its own instructions when they were unclear or incomplete — and stays silent when nothing needs changing.
@@ -163,11 +163,11 @@ Makes the agent ask clarifying questions before producing output when the brief 
 - Example prompt: Before producing [output], check whether the brief is clear enough to commit to. If anything ambiguous would change the result — scope, audience, constraints, definition of done — ask me those questions first, as one short batch, and wait. Only ask what you genuinely can't proceed without; don't ask things the brief already answers. If it's already clear, say so and proceed without stalling.
 - URL: https://skillpatterns.ai/patterns/clarification-gate/
 
-### Codified judgment
+### Decision delegation
 Encodes when the agent should decide on its own versus pause — so routine choices auto-resolve and only genuinely high-stakes calls escalate.
 - What it adds: Defines decision principles the agent applies without asking; Separates 'always stop for this' from 'never stop for this'; Logs the auto-decisions it made so they can be audited later.
 - Example prompt: As you work, don't ask me about every fork. Decide on your own using these principles: [principles]. Always stop and ask for: [high-stakes, irreversible, or taste-defining choices]. Never stop for: [reversible, mechanical, low-stakes choices] — just decide and note it. Keep a short running log of the decisions you made on your own and why, so I can review them afterward.
-- URL: https://skillpatterns.ai/patterns/codified-judgment/
+- URL: https://skillpatterns.ai/patterns/decision-delegation/
 
 ### Human in the loop
 Inserts explicit checkpoints where the agent pauses for discernment before proceeding.

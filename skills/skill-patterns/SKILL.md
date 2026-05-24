@@ -31,11 +31,11 @@ Whenever you're authoring or revising a Skill's instructions: drafting a new `SK
 ## Decision policy (apply vs. ask)
 
 - **Apply by default, no need to ask:** Scope guardrails and Clarification gate for anything that acts or takes ambiguous input; Trusted sources for anything fact-dependent; Schema-locked output for anything another system parses.
-- **Propose, then confirm:** patterns that change the interaction model or add real cost — Adversarial push back, Premortem, multi-pass self-review, Council-style debate.
+- **Propose, then confirm:** patterns that change the interaction model or add real cost — Adversarial pushback, Premortem, multi-pass self-review, Council-style debate.
 - **Always confirm before:** removing a pattern the user explicitly asked for, or applying more than four.
 
 ## Note
 
-This skill is itself a composition of its own catalog: it grounds in an authoritative source (Trusted sources), generates bounded candidates (Bounded option generation), decides what to apply vs. surface (Codified judgment), exposes its choices for override (Clarification gate), and loads detail only when needed (Progressive disclosure).
+This skill is itself a composition of its own catalog: it grounds in an authoritative source (Trusted sources), generates bounded candidates (Bounded option generation), decides what to apply vs. surface (Decision delegation), exposes its choices for override (Clarification gate), and loads detail only when needed (Progressive disclosure).
 
 `references/patterns.md` is a generated snapshot of the live catalog (`skillpatterns.ai/llms.txt`); regenerate it when the catalog changes.
