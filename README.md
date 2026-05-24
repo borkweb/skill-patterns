@@ -48,26 +48,6 @@ Copy `skills/skill-patterns/` into your agent's skills directory:
 
 Codex and Gemini CLI also read the shared `.agents/skills/` alias.
 
-## What's inside
-
-```
-.claude-plugin/
-├── plugin.json          # plugin manifest
-└── marketplace.json     # lets the repo be added as a marketplace
-skills/
-└── skill-patterns/
-    ├── SKILL.md
-    └── references/       # decision guide + catalog snapshot
-```
-
-## Keeping the catalog snapshot current
-
-The skill bundles a snapshot of the catalog at `skills/skill-patterns/references/patterns.md`. When the catalog changes (on the `gh-pages` site), regenerate it:
-
-```
-curl -s https://skillpatterns.ai/llms.txt > skills/skill-patterns/references/patterns.md
-```
-
 ## License
 
 MIT — see `LICENSE`.
