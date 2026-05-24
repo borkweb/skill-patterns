@@ -27,4 +27,6 @@ exclude:
   - .superpowers/
   - vendor/
   - skills/
+  - AGENTS.md
+  - CLAUDE.md
   - "*.pdf"
