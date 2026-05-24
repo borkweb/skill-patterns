@@ -7,6 +7,16 @@ permalink: /using/
 
 # Using the patterns
 
+Most people build a Skill *with* an AI — so the fastest way to use these patterns is to let the AI apply them for you. Prefer to place them by hand? That works too, and the rest of this page walks through it.
+
+## Build with an AI
+
+> **Point your agent at the catalog** — [`/llms.txt`]({{ '/llms.txt' | relative_url }}) or [`/patterns.json`]({{ '/patterns.json' | relative_url }}) — and ask it to apply the patterns your skill's purpose calls for. It selects and weaves them in, then shows you what it chose so you can adjust.
+>
+> **Even easier:** install the **skill-patterns** skill — `npx skills add https://github.com/borkweb/skill-patterns --skill skill-patterns` — and it applies the right patterns automatically whenever you build a Skill.
+
+That's the whole point of the catalog: you shouldn't have to hand-pick. The sections below are for when you *want* to.
+
 ## The basic move
 
 1. Find a pattern that matches the behavior you want.
@@ -16,33 +26,9 @@ permalink: /using/
 
 That's it. A pattern is just a well-worded instruction; the catalog saves you from rediscovering the wording every time.
 
-## Choosing the right patterns
+## Choosing patterns
 
-Not sure which to reach for? Match the *behavior of the skill* to a pattern:
-
-| If the skill… | Reach for… |
-|---|---|
-| relies on facts that must be correct | Trusted sources, Confidence calibration |
-| pulls from multiple sources or feeds | Graceful degradation, Signal vs. noise |
-| often gets vague or ambiguous briefs | Clarification gate, Question sharpening |
-| makes a recommendation or decision | Bounded option generation, Decision capture, Stakes-scaled rigor |
-| reviews or evaluates work | Encoded reasoning, Gap-to-target scoring, Self-critique |
-| must catch errors before it ships | Prove it works, Premortem, Failure mode preloading, Disconfirmation |
-| takes an irreversible or high-stakes action | Human in the loop, Scope guardrails |
-| runs autonomously or for a long time | Codified judgment, Circuit breaker, Long-term memory |
-| produces a deliverable in a set format | Artifact creation, Format projection |
-| feeds another system (machine-readable) | Schema-locked output |
-| encodes one tool or library's conventions | Convention wrapper |
-| should match a particular voice or style | Exemplars over instruction |
-| is a multi-step or multi-skill workflow | Decomposition, Workflows as superset, Externalized working state, Progressive disclosure |
-| tends to produce people-pleasing answers | Anti-sycophancy |
-| benefits from a specific expert stance | Role priming |
-
-Most skills need **two to four** of these — composing more usually makes a skill worse, not better.
-
-**Building with an AI?** You don't have to pick at all. Point it at the catalog — [`/llms.txt`]({{ '/llms.txt' | relative_url }}) or [`/patterns.json`]({{ '/patterns.json' | relative_url }}) — and ask it to apply the patterns your skill's purpose calls for. It can select and weave them in, then show you what it chose so you can adjust.
-
-Even easier: install the **skill-patterns** skill — `npx skills add https://github.com/borkweb/skill-patterns --skill skill-patterns` — and it applies the right patterns automatically whenever you build a Skill.
+Not sure which to grab? [Browse the catalog]({{ '/' | relative_url }}) — it's grouped by purpose, so skim the category that fits your skill's job. Most skills need only **two to four** patterns; composing more usually makes a skill worse. Or skip the picking entirely and let an AI choose (above).
 
 ## Fill in the brackets
 

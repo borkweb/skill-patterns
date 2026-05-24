@@ -128,19 +128,29 @@ a:hover { text-decoration: underline; }
 
 .is-hidden { display: none !important; }
 
-/* Resources / simple pages */
-.page { max-width: var(--content-max); margin: 0 auto; padding: 40px 24px; }
-.page h1 { font-size: 30px; font-weight: 800; letter-spacing: -.02em; }
-.page h2 { margin-top: 28px; font-size: 15px; text-transform: uppercase; letter-spacing: .05em; color: var(--text-faint); }
-.page ul, .page ol { padding-left: 20px; }
-.page li { margin: 8px 0; color: var(--text-muted); }
-.page p { color: var(--text-muted); line-height: 1.6; }
+/* Content pages (about, how-to) */
+.page { max-width: 880px; margin: 0 auto; padding: 48px 28px 72px; }
+.page h1 { font-size: 36px; font-weight: 800; letter-spacing: -.025em; margin: 0 0 10px; }
+.page h2 { font-size: 22px; font-weight: 700; letter-spacing: -.01em; color: var(--text); margin: 44px 0 14px; padding-top: 28px; border-top: 1px solid var(--border); }
+.page h1 + h2 { border-top: none; padding-top: 0; margin-top: 22px; }
+.page h3 { font-size: 16px; font-weight: 700; margin: 26px 0 8px; }
+.page p { color: var(--text-muted); line-height: 1.7; font-size: 15.5px; }
+.page ul, .page ol { padding-left: 22px; }
+.page li { margin: 7px 0; color: var(--text-muted); line-height: 1.6; }
+.page li::marker { color: var(--text-faint); }
 .page strong { color: var(--text); }
 .page a { color: var(--accent); }
-.page code { font-family: var(--mono); font-size: .9em; background: var(--bg-elevated); padding: 1px 6px; border-radius: 5px; color: var(--text); }
-.page pre { background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 10px; padding: 14px 16px; overflow-x: auto; line-height: 1.55; }
-.page pre code { background: none; padding: 0; font-size: 12.5px; color: var(--text); }
-.page blockquote { border-left: 3px solid var(--border-strong); margin: 16px 0; padding: 6px 0 6px 16px; color: var(--text-muted); }
+.page code { font-family: var(--mono); font-size: .88em; background: var(--bg-elevated); padding: 2px 6px; border-radius: 5px; color: var(--text); }
+.page pre { background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 10px; padding: 16px 18px; overflow-x: auto; line-height: 1.6; margin: 16px 0; }
+.page pre code { background: none; padding: 0; font-size: 13px; color: var(--text); }
+.page blockquote { border-left: 3px solid var(--accent); background: var(--bg-elevated); border-radius: 0 8px 8px 0; margin: 18px 0; padding: 14px 18px; color: var(--text-muted); }
+.page blockquote p { margin: 0 0 8px; }
+.page blockquote p:last-child { margin-bottom: 0; }
+.page table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 14.5px; }
+.page thead th { text-align: left; padding: 10px 14px; border-bottom: 2px solid var(--border-strong); font-size: 12px; text-transform: uppercase; letter-spacing: .04em; color: var(--text-faint); }
+.page tbody td { text-align: left; padding: 11px 14px; border-bottom: 1px solid var(--border); vertical-align: top; line-height: 1.5; }
+.page tbody td:first-child { color: var(--text); font-weight: 500; width: 44%; }
+.page tbody tr:hover { background: var(--bg-elevated); }
 
 /* Footer */
 .site-footer { border-top: 1px solid var(--border); padding: 28px 24px; text-align: center; color: var(--text-faint); font-size: 13px; }
@@ -187,4 +197,6 @@ a:hover { text-decoration: underline; }
   .content { padding: 24px 20px; }
   .home { padding: 24px 20px; }
   .hero { padding: 44px 20px 36px; }
+  .page { padding: 32px 20px 56px; }
+  .page tbody td:first-child { width: auto; }
 }
