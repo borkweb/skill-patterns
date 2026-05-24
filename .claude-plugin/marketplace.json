@@ -1,0 +1,14 @@
+{
+  "name": "skill-patterns",
+  "owner": { "name": "Matt Batchelder" },
+  "plugins": [
+    {
+      "name": "skill-patterns",
+      "source": "./",
+      "description": "Applies the right skill-design patterns when you create or improve an agent Skill.",
+      "homepage": "https://skillpatterns.ai",
+      "license": "MIT",
+      "keywords": ["skills", "patterns", "agent"]
+    }
+  ]
+}

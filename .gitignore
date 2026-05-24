@@ -1,9 +1,13 @@
-.superpowers/
+.DS_Store
+node_modules/
+
+# Build/tooling artifacts that may linger from the gh-pages (site) branch
 _site/
 .jekyll-cache/
 .jekyll-metadata
 vendor/
 Gemfile.lock
-.playwright-mcp/
 .bundle/
 .ruby-version
+.playwright-mcp/
+.superpowers/

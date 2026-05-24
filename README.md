@@ -1,54 +1,62 @@
-# Skill Patterns
+# Skill Patterns — plugin
 
-A clean, searchable catalog of reusable patterns for composing AI Skills — published at
-[skillpatterns.ai](https://skillpatterns.ai).
+A Claude / Codex / Gemini plugin that helps you **build better Skills**. When you create or improve an agent Skill, it works out which skill-design patterns the skill's purpose calls for and weaves them in — so you don't have to hand-pick them.
 
-The patterns are grouped by purpose (grounding, decision-making, output shaping, critique,
-control, and composition). A scannable card index links to a focused page per pattern, each with
-a definition, what it adds, and a copyable example prompt partial. Light/dark themes, instant
-full-text search, FontAwesome icons, and per-page SEO (metadata, canonical, Open Graph,
-`sitemap.xml`). Built with Jekyll — no CI.
+It ships the **skill-patterns** skill, backed by a catalog of 34 reusable behavioral patterns. Browse the full catalog at **[skillpatterns.ai](https://skillpatterns.ai)**.
 
-## Local development
+> **Branches:** this `main` branch is the installable plugin. The website that publishes [skillpatterns.ai](https://skillpatterns.ai) lives on the [`gh-pages`](https://github.com/borkweb/skill-patterns/tree/gh-pages) branch.
 
-Requires Ruby + Bundler.
+## What it does
 
-```bash
-bundle install
-bundle exec jekyll serve --port 4000
-# open http://localhost:4000
+When you start writing or editing a `SKILL.md`, the skill:
+
+1. Grounds in the full pattern catalog (a bundled snapshot).
+2. Reads the skill's purpose — its inputs, outputs, and what could go wrong.
+3. Selects the patterns that fit, applies the clear ones, and proposes the borderline ones.
+4. Shows you what it applied and why, so you can adjust — or pick yourself.
+
+Most skills need only 2–4 patterns; it keeps things lean and asks before anything high-stakes.
+
+## Install
+
+### Claude Code (plugin marketplace)
+
+```
+/plugin marketplace add borkweb/skill-patterns
+/plugin install skill-patterns@skill-patterns
 ```
 
-## Adding or editing a pattern
+It then activates automatically when you build a Skill, or invoke it with `/skill-patterns:skill-patterns`.
 
-Each pattern is one Markdown file in `_patterns/`. Copy an existing one and edit the frontmatter:
+### Codex, Gemini, Cursor, and other agents (npx skills)
 
-```yaml
----
-title: "My pattern"
-slug: my-pattern            # unique; becomes the /patterns/<slug>/ URL and copy target
-icon: "fa-solid fa-star"    # any FontAwesome Free solid icon
-category: grounding         # one of the keys in _data/categories.yml
-summary: "One-line definition."
-adds:
-  - "What it adds, bullet one"
-  - "Bullet two"
-prompt: |
-  The example prompt partial users can copy.
----
+```
+npx skills add https://github.com/borkweb/skill-patterns --skill skill-patterns
 ```
 
-Patterns are listed alphabetically by title within their category. Categories (titles,
-descriptions, and their display order) live in `_data/categories.yml`.
+### Manual (Claude Code)
 
-## Deployment
+Copy `skills/skill-patterns/` into `~/.claude/skills/` (personal) or a project's `.claude/skills/`.
 
-GitHub Pages builds this site natively (no Action). In repo **Settings → Pages**:
-set **Source: Deploy from a branch**, branch `main`, folder `/ (root)`.
+## What's inside
 
-The custom domain is set via the `CNAME` file. Point your registrar's DNS at GitHub Pages
-following GitHub's [Managing a custom domain](https://docs.github.com/pages/configuring-a-custom-domain-for-your-github-pages-site)
-docs, then enable **Enforce HTTPS** in Settings → Pages.
+```
+.claude-plugin/
+├── plugin.json          # plugin manifest
+└── marketplace.json     # lets the repo be added as a marketplace
+skills/
+└── skill-patterns/
+    ├── SKILL.md
+    └── references/       # decision guide + catalog snapshot
+```
+
+## Keeping the catalog snapshot current
+
+The skill bundles a snapshot of the catalog at `skills/skill-patterns/references/patterns.md`. When the catalog changes (on the `gh-pages` site), regenerate it:
+
+```
+curl -s https://skillpatterns.ai/llms.txt > skills/skill-patterns/references/patterns.md
+```
 
 ## License
 
