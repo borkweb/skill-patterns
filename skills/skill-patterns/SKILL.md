@@ -13,7 +13,7 @@ Whenever you're authoring or revising a Skill's instructions: drafting a new `SK
 
 ## How to apply patterns (default flow)
 
-1. **Ground in the catalog.** Read `references/patterns.md` for the full set — each pattern's definition, what it adds, and a ready-to-adapt example prompt. Treat it as authoritative; prefer it over improvising patterns from memory. (If you have network access and want the latest, the live source is `https://skillpatterns.com/llms.txt`.)
+1. **Ground in the catalog.** Read `references/patterns.md` for the full set — each pattern's definition, what it adds, and a ready-to-adapt example prompt. Treat it as authoritative; prefer it over improvising patterns from memory. (If you have network access and want the latest, the live source is `https://skillpatterns.ai/llms.txt`.)
 
 2. **Understand the skill's job.** In a sentence or two: what does it do, what are its inputs and outputs, and what could go wrong — irreversible actions? ambiguous briefs? facts that must be right? multiple data sources? machine-read output?
 
@@ -38,4 +38,4 @@ Whenever you're authoring or revising a Skill's instructions: drafting a new `SK
 
 This skill is itself a composition of its own catalog: it grounds in an authoritative source (Trusted sources), generates bounded candidates (Bounded option generation), decides what to apply vs. surface (Codified judgment), exposes its choices for override (Clarification gate), and loads detail only when needed (Progressive disclosure).
 
-`references/patterns.md` is a generated snapshot of the live catalog (`skillpatterns.com/llms.txt`); regenerate it when the catalog changes.
+`references/patterns.md` is a generated snapshot of the live catalog (`skillpatterns.ai/llms.txt`); regenerate it when the catalog changes.

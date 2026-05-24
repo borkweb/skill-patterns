@@ -42,6 +42,8 @@ Most skills need **two to four** of these — composing more usually makes a ski
 
 **Building with an AI?** You don't have to pick at all. Point it at the catalog — [`/llms.txt`]({{ '/llms.txt' | relative_url }}) or [`/patterns.json`]({{ '/patterns.json' | relative_url }}) — and ask it to apply the patterns your skill's purpose calls for. It can select and weave them in, then show you what it chose so you can adjust.
 
+Even easier: install the **skill-patterns** skill — `npx skills add https://github.com/borkweb/skill-patterns --skill skill-patterns` — and it applies the right patterns automatically whenever you build a Skill.
+
 ## Fill in the brackets
 
 The `[brackets]` are slots, not literal text. The Convention wrapper prompt, for instance, starts:

@@ -1,6 +1,6 @@
 title: "Skill Patterns"
 description: "A catalog of reusable patterns for composing AI Skills."
-url: "https://skillpatterns.com"
+url: "https://skillpatterns.ai"
 baseurl: ""
 repo_url: "https://github.com/borkweb/skill-patterns"
 
@@ -26,5 +26,5 @@ exclude:
   - docs/
   - .superpowers/
   - vendor/
-  - skill/
+  - skills/
   - "*.pdf"

@@ -1,7 +1,7 @@
 # Skill Patterns
 
 A clean, searchable catalog of reusable patterns for composing AI Skills — published at
-[skillpatterns.com](https://skillpatterns.com).
+[skillpatterns.ai](https://skillpatterns.ai).
 
 The patterns are grouped by purpose (grounding, decision-making, output shaping, critique,
 control, and composition). A scannable card index links to a focused page per pattern, each with
