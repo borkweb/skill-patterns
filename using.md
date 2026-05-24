@@ -32,7 +32,7 @@ Not sure which to grab? [Browse the catalog]({{ '/' | relative_url }}) — it's 
 
 ## Fill in the brackets
 
-The `[brackets]` are slots, not literal text. The Convention wrapper prompt, for instance, starts:
+The `[brackets]` are slots, not literal text. The Scoped conventions prompt, for instance, starts:
 
 > When the task involves `[tool / library / domain]`, follow these conventions: `[rules, or point to a reference doc]`…
 

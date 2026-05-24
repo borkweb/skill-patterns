@@ -1,5 +1,5 @@
 ---
-title: "Adversarial push back"
+title: "Adversarial pushback"
 slug: adversarial-push-back
 icon: "fa-solid fa-gavel"
 category: critique

@@ -1,6 +1,6 @@
 ---
 title: "Prove it works"
-slug: verification-before-completion
+slug: prove-it-works
 icon: "fa-solid fa-circle-check"
 category: critique
 summary: "Before claiming the work is done, the Skill proves it actually happened — running it, checking output, showing evidence — instead of asserting completion."

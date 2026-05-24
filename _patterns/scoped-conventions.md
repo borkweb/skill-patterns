@@ -1,6 +1,6 @@
 ---
-title: "Convention wrapper"
-slug: convention-wrapper
+title: "Scoped conventions"
+slug: scoped-conventions
 icon: "fa-solid fa-screwdriver-wrench"
 category: grounding
 summary: "Packages a specific tool, library, or domain's conventions as on-demand knowledge the Skill applies only when that area is in play."

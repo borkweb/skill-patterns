@@ -1,6 +1,6 @@
 ---
-title: "Codified judgment"
-slug: codified-judgment
+title: "Decision delegation"
+slug: decision-delegation
 icon: "fa-solid fa-scale-balanced"
 category: control
 summary: "Encodes when the agent should decide on its own versus pause — so routine choices auto-resolve and only genuinely high-stakes calls escalate."
