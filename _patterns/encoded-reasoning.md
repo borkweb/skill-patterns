@@ -4,11 +4,11 @@ slug: encoded-reasoning
 icon: "fa-solid fa-list-check"
 category: critique
 order: 1
-summary: "Bakes review rubrics, validation steps, and quality checks into how the Skill operates."
+summary: "Bakes the review rubric and quality gates into the Skill — it drafts, checks its own work against the criteria, and revises before returning."
 adds:
-  - "Runs outputs against a defined rubric before returning them"
-  - "Surfaces which criteria passed, failed, or are uncertain"
-  - "Catches predictable failure modes the team has seen before"
+  - "Runs output against a defined rubric — or, absent one, the brief and what a strong reviewer would notice"
+  - "Reports which criteria passed, failed, or are uncertain, and names the weakest reasoning and most fragile assumption"
+  - "Holds back work that fails a hard criterion — revises, retries, and returns a note on what changed"
 prompt: |
-  Before returning output, check the work against these criteria: [rubric items]. Report which criteria passed, failed, or are uncertain. Don't return work that fails [hard criteria] — revise and retry. Surface the rubric results alongside the output so I can see the reasoning.
+  Before returning [output], check your own work against these criteria: [rubric items — or, absent a rubric, the original brief and what a strong reviewer would notice]. Report which criteria passed, failed, or are uncertain, and name the weakest reasoning and the most fragile assumption. Don't return work that fails a hard criterion — revise and retry. Return the revised output with a brief note on what changed and why.
 ---
