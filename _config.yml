@@ -32,3 +32,4 @@ exclude:
   - AGENTS.md
   - CLAUDE.md
   - "*.pdf"
+  - "*.sh"
