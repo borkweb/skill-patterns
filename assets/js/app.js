@@ -1,15 +1,14 @@
 (function () {
   'use strict';
 
-  /* Theme toggle */
-  var toggle = document.getElementById('theme-toggle');
-  if (toggle) {
+  /* Theme toggle (header + footer share the same behavior) */
+  Array.prototype.forEach.call(document.querySelectorAll('.theme-toggle'), function (toggle) {
     toggle.addEventListener('click', function () {
       var next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
       document.documentElement.setAttribute('data-theme', next);
       try { localStorage.setItem('theme', next); } catch (e) {}
     });
-  }
+  });
 
   /* Mobile sidebar drawer (opened by the header hamburger) */
   var sidebar = document.getElementById('sidebar');
@@ -21,7 +20,7 @@
       if (backdrop) { backdrop.classList.toggle('is-visible', open); }
       hamburger.setAttribute('aria-expanded', open ? 'true' : 'false');
       hamburger.setAttribute('aria-label', open ? 'Close navigation' : 'Open navigation');
-      document.body.classList.toggle('nav-drawer-open', open);
+      document.documentElement.classList.toggle('nav-drawer-open', open);
     };
     hamburger.addEventListener('click', function () {
       setDrawer(!sidebar.classList.contains('is-open'));

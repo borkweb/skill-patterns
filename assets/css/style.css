@@ -202,6 +202,7 @@ a:hover { text-decoration: underline; }
 .footer-nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 20px; margin-bottom: 12px; }
 .footer-nav a { font-weight: 500; }
 .footer-nav a:hover { color: var(--text); }
+.footer-theme { margin: 12px auto 0; }
 
 /* Hero */
 .mono { font-family: var(--mono); }
@@ -297,18 +298,20 @@ a:hover { text-decoration: underline; }
   /* Sidebar becomes an off-canvas drawer toggled by the header hamburger */
   html.has-sidebar .header-link { display: none; }
   html.has-sidebar .nav-hamburger { display: grid; }
+  .site-header .theme-toggle { display: none; }
   .sidebar {
-    position: fixed; top: var(--header-h); right: 0; left: auto; bottom: 0; z-index: 40;
-    width: min(330px, 86vw); height: auto; flex: none; flex-basis: auto;
+    position: fixed; top: var(--header-h); right: 0; left: auto; z-index: 40;
+    width: min(330px, 86vw); height: calc(100dvh - var(--header-h)); flex: none;
     padding: 16px 14px 28px; border-left: 1px solid var(--border); border-right: none; border-bottom: none;
-    background: var(--bg); overflow-y: auto; box-shadow: -16px 0 50px rgba(0,0,0,.3);
+    background: var(--bg); overflow-y: auto; -webkit-overflow-scrolling: touch;
+    box-shadow: -16px 0 50px rgba(0,0,0,.3);
     transform: translateX(100%); visibility: hidden;
     transition: transform .26s ease, visibility .26s ease;
   }
   .sidebar.is-open { transform: translateX(0); visibility: visible; }
   .sidebar-nav { display: block; }
   .sidebar-cat:first-child { margin-top: 0; }
-  body.nav-drawer-open { overflow: hidden; }
+  html.nav-drawer-open { overflow: hidden; }
 
   .content { padding: 24px 20px; }
   .home { padding: 24px 20px; }
