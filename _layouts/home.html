@@ -1,6 +1,9 @@
 ---
 layout: default
 ---
+{%- comment -%} Sidebar isn't shown as a column on the home page (hidden on desktop);
+it exists only to power the mobile hamburger drawer. {%- endcomment -%}
+{%- include sidebar.html -%}
 <header class="hero">
   <div class="hero__bg" aria-hidden="true"></div>
   <div class="hero__blobs" aria-hidden="true">
@@ -11,7 +14,7 @@ layout: default
     {{ content }}
     <div class="hero__cta">
       <a class="btn btn--primary" href="{{ '/patterns/' | relative_url }}"><i class="fa-solid fa-compass" aria-hidden="true"></i> Browse the catalog</a>
-      <a class="btn btn--ghost" href="{{ '/using/' | relative_url }}"><i class="fa-solid fa-download" aria-hidden="true"></i> Install the plugin</a>
+      <a class="btn btn--ghost" href="{{ '/using/' | relative_url }}"><i class="fa-solid fa-download" aria-hidden="true"></i> Install the Skill</a>
     </div>
     <dl class="hero__stats">
       <div class="hero__stat"><dt>{{ site.patterns | size }}</dt><dd>Patterns</dd></div>
