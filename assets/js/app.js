@@ -11,40 +11,51 @@
     });
   }
 
-  /* Sidebar collapse (mobile) */
+  /* Mobile sidebar drawer (opened by the header hamburger) */
   var sidebar = document.getElementById('sidebar');
-  var sidebarToggle = document.getElementById('sidebar-toggle');
-  if (sidebar && sidebarToggle) {
-    sidebarToggle.addEventListener('click', function () {
-      var open = sidebar.classList.toggle('is-open');
-      sidebarToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  var hamburger = document.getElementById('nav-hamburger');
+  var backdrop = document.getElementById('sidebar-backdrop');
+  if (sidebar && hamburger) {
+    var setDrawer = function (open) {
+      sidebar.classList.toggle('is-open', open);
+      if (backdrop) { backdrop.classList.toggle('is-visible', open); }
+      hamburger.setAttribute('aria-expanded', open ? 'true' : 'false');
+      hamburger.setAttribute('aria-label', open ? 'Close navigation' : 'Open navigation');
+      document.body.classList.toggle('nav-drawer-open', open);
+    };
+    hamburger.addEventListener('click', function () {
+      setDrawer(!sidebar.classList.contains('is-open'));
+    });
+    if (backdrop) { backdrop.addEventListener('click', function () { setDrawer(false); }); }
+    sidebar.addEventListener('click', function (e) {
+      if (e.target.closest('a')) { setDrawer(false); }
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && sidebar.classList.contains('is-open')) { setDrawer(false); }
     });
   }
 
   /* Index search — filters cards by full-text data-search attribute */
+  /* Sidebar pattern filter (detail pages) */
   var search = document.getElementById('pattern-search');
-  var cards = Array.prototype.slice.call(document.querySelectorAll('.pcard'));
-  if (search && cards.length) {
-    var sections = Array.prototype.slice.call(document.querySelectorAll('.cat-section'));
-    var noResults = document.getElementById('no-results');
-    var noResultsQ = document.getElementById('no-results-q');
-    var searchReset = document.getElementById('search-reset');
+  var sideItems = Array.prototype.slice.call(document.querySelectorAll('.sidebar-cat li'));
+  if (search && sideItems.length) {
+    var sideGroups = Array.prototype.slice.call(document.querySelectorAll('.sidebar-cat'));
+    var sideEmpty = document.getElementById('sidebar-empty');
 
     var applyFilter = function (raw) {
       var q = (raw || '').trim().toLowerCase();
       var anyVisible = false;
-      cards.forEach(function (c) {
-        var match = q === '' || (c.getAttribute('data-search') || '').indexOf(q) !== -1;
-        c.classList.toggle('is-hidden', !match);
+      sideItems.forEach(function (li) {
+        var a = li.querySelector('a');
+        var match = q === '' || (a ? a.textContent.toLowerCase() : '').indexOf(q) !== -1;
+        li.classList.toggle('is-hidden', !match);
         if (match) { anyVisible = true; }
       });
-      sections.forEach(function (s) {
-        s.classList.toggle('is-hidden', s.querySelectorAll('.pcard:not(.is-hidden)').length === 0);
+      sideGroups.forEach(function (g) {
+        g.classList.toggle('is-hidden', g.querySelectorAll('li:not(.is-hidden)').length === 0);
       });
-      if (noResults) {
-        noResults.classList.toggle('is-hidden', anyVisible);
-        if (!anyVisible && noResultsQ) { noResultsQ.textContent = (raw || '').trim(); }
-      }
+      if (sideEmpty) { sideEmpty.classList.toggle('is-hidden', anyVisible); }
     };
 
     var resetSearch = function () {
@@ -54,7 +65,6 @@
     };
 
     search.addEventListener('input', function () { applyFilter(search.value); });
-    if (searchReset) { searchReset.addEventListener('click', resetSearch); }
 
     document.addEventListener('keydown', function (e) {
       if (e.key === '/' && document.activeElement !== search) {

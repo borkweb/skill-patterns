@@ -1,8 +1,8 @@
 ---
-layout: page
-title: What are skill patterns?
+layout: doc
+title: Docs
 description: Reusable, composable techniques for shaping how an AI agent behaves.
-permalink: /about/
+permalink: /docs/
 ---
 
 # What are skill patterns?
@@ -30,4 +30,4 @@ Patterns are grouped by what they're *for*:
 
 Every pattern in the catalog has the same shape: a one-line **definition**, a short list of **what it adds**, and a copyable **example prompt partial** — a ready-to-use snippet with `[bracketed]` slots you fill in with your specifics.
 
-[Browse the patterns →]({{ '/' | relative_url }}) · [How to use them →]({{ '/using/' | relative_url }})
+[Browse the patterns →]({{ '/patterns/' | relative_url }}) · [Install the Skill →]({{ '/using/' | relative_url }})

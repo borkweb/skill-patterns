@@ -1,9 +1,15 @@
 <aside class="sidebar" id="sidebar">
-  <button class="sidebar-toggle" id="sidebar-toggle" type="button" aria-expanded="false" aria-controls="sidebar-nav">
-    <span>Browse patterns</span>
-    <span class="sidebar-toggle__icon" aria-hidden="true"></span>
-  </button>
   <nav class="sidebar-nav" id="sidebar-nav" aria-label="Patterns">
+    <div class="sidebar-search search">
+      <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+      <input type="search" id="pattern-search" placeholder="Filter patterns…" aria-label="Filter patterns" autocomplete="off">
+    </div>
+    <ul class="sidebar-pages">
+      <li><a href="{{ '/docs/' | relative_url }}"{% if page.url == '/docs/' %} class="is-active" aria-current="page"{% endif %}><i class="fa-solid fa-circle-info" aria-hidden="true"></i><span>What are these?</span></a></li>
+      <li><a href="{{ '/using/' | relative_url }}"{% if page.url == '/using/' %} class="is-active" aria-current="page"{% endif %}><i class="fa-solid fa-download" aria-hidden="true"></i><span>Install the Skill</span></a></li>
+      <li><a href="{{ '/manual/' | relative_url }}"{% if page.url == '/manual/' %} class="is-active" aria-current="page"{% endif %}><i class="fa-solid fa-screwdriver-wrench" aria-hidden="true"></i><span>Manual usage</span></a></li>
+      <li><a href="{{ '/patterns/' | relative_url }}"{% if page.url == '/patterns/' %} class="is-active" aria-current="page"{% endif %}><i class="fa-solid fa-layer-group" aria-hidden="true"></i><span>Patterns</span></a></li>
+    </ul>
     {% assign cats = site.data.categories | sort: "order" %}
     {% for cat in cats %}
       <div class="sidebar-cat" data-cat="{{ cat.key }}">
@@ -16,5 +22,7 @@
         </ul>
       </div>
     {% endfor %}
+    <p class="sidebar-empty is-hidden" id="sidebar-empty">No patterns match that filter.</p>
   </nav>
 </aside>
+<div class="sidebar-backdrop" id="sidebar-backdrop"></div>

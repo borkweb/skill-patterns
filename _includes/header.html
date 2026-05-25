@@ -1,8 +1,12 @@
 <header class="site-header">
   <a class="brand" href="{{ '/' | relative_url }}">Skill<span>Patterns</span></a>
   <nav class="header-nav" aria-label="Primary">
-    <a href="{{ '/about/' | relative_url }}"><span class="nav-full">What are these?</span><span class="nav-short">What?</span></a>
-    <a href="{{ '/using/' | relative_url }}"><span class="nav-full">How to use</span><span class="nav-short">How</span></a>
+    <button id="nav-hamburger" class="nav-hamburger" type="button" aria-label="Open navigation" aria-controls="sidebar" aria-expanded="false">
+      <span class="nav-hamburger__icon" aria-hidden="true"></span>
+    </button>
+    <a class="header-link" href="{{ '/patterns/' | relative_url }}"><span class="nav-full">Patterns</span><span class="nav-short">Patterns</span></a>
+    <a class="header-link" href="{{ '/docs/' | relative_url }}"><span class="nav-full">Docs</span><span class="nav-short">Docs</span></a>
+    <a class="header-link" href="{{ '/using/' | relative_url }}"><span class="nav-full">Install the Skill</span><span class="nav-short">Install</span></a>
     <a href="{{ site.repo_url }}" rel="noopener" aria-label="GitHub"><i class="fa-brands fa-github" aria-hidden="true"></i></a>
     <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle dark mode">
       <span class="theme-toggle__icon" aria-hidden="true"></span>

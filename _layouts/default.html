@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en" data-theme="light"{% if page.layout == 'pattern' or page.layout == 'doc' or page.sidebar %} class="has-sidebar"{% endif %}>
 <head>
   {%- include head.html -%}
 </head>

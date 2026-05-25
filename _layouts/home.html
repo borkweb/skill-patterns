@@ -3,29 +3,40 @@ layout: default
 ---
 <header class="hero">
   <div class="hero__bg" aria-hidden="true"></div>
+  <div class="hero__blobs" aria-hidden="true">
+    <span class="hero__blob a"></span><span class="hero__blob b"></span><span class="hero__blob c"></span>
+  </div>
   <div class="hero__inner">
-    <div class="hero__eyebrow mono">{{ site.patterns | size }} composable patterns</div>
+    <div class="hero__eyebrow mono"><i class="fa-solid fa-cubes-stacked" aria-hidden="true"></i>{{ site.patterns | size }} composable patterns</div>
     {{ content }}
-    <div class="search search--home">
-      <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
-      <input type="search" id="pattern-search" placeholder="Search patterns…" aria-label="Search patterns" autocomplete="off">
+    <div class="hero__cta">
+      <a class="btn btn--primary" href="{{ '/patterns/' | relative_url }}"><i class="fa-solid fa-compass" aria-hidden="true"></i> Browse the catalog</a>
+      <a class="btn btn--ghost" href="{{ '/using/' | relative_url }}"><i class="fa-solid fa-download" aria-hidden="true"></i> Install the plugin</a>
     </div>
+    <dl class="hero__stats">
+      <div class="hero__stat"><dt>{{ site.patterns | size }}</dt><dd>Patterns</dd></div>
+      <div class="hero__stat"><dt>{{ site.data.categories | size }}</dt><dd>Categories</dd></div>
+      <div class="hero__stat"><dt>0</dt><dd>Dependencies</dd></div>
+    </dl>
   </div>
 </header>
 <div class="home">
   {% assign cats = site.data.categories | sort: "order" %}
-  <nav class="cat-nav" aria-label="Jump to category">
-    {% for cat in cats %}<a href="#cat-{{ cat.key }}" data-cat="{{ cat.key }}">{{ cat.title | escape }}</a>{% endfor %}
-  </nav>
-  {% for cat in cats %}
-    <section class="cat-section" id="cat-{{ cat.key }}" data-cat="{{ cat.key }}">
-      <h2 class="cat-section__title">{{ cat.title | escape }}</h2>
-      <p class="cat-section__desc">{{ cat.description | escape }}</p>
-      <div class="card-grid">
-        {% assign pats = site.patterns | where: "category", cat.key | sort_natural: "title" %}
-        {% for p in pats %}{% include pattern-card.html pattern=p %}{% endfor %}
-      </div>
-    </section>
-  {% endfor %}
-  <p class="no-results is-hidden" id="no-results">No patterns match “<span id="no-results-q"></span>”. <button type="button" class="no-results__reset" id="search-reset">Clear search</button> and browse all {{ site.patterns | size }}.</p>
+  <div class="cat-overview">
+    {% for cat in cats %}
+      {% assign pats = site.patterns | where: "category", cat.key | sort_natural: "title" %}
+      <article class="cat-box" data-cat="{{ cat.key }}">
+        <a class="cat-box__head" href="{{ '/patterns/' | relative_url }}#cat-{{ cat.key }}">
+          <h2 class="cat-box__title">{{ cat.title | escape }}</h2>
+          <span class="cat-box__count">{{ pats | size }}</span>
+        </a>
+        <p class="cat-box__desc">{{ cat.description | escape }}</p>
+        <ul class="cat-box__list">
+          {% for p in pats %}
+            <li><a href="{{ p.url | relative_url }}">{% if p.icon %}<i class="{{ p.icon }}" aria-hidden="true"></i>{% endif %}<span>{{ p.title }}</span></a></li>
+          {% endfor %}
+        </ul>
+      </article>
+    {% endfor %}
+  </div>
 </div>

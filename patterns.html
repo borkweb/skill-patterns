@@ -1,0 +1,29 @@
+---
+layout: default
+title: Patterns
+permalink: /patterns/
+sidebar: true
+---
+<div class="layout">
+  {%- include sidebar.html -%}
+  <main class="content" id="content">
+    <header class="patterns-head">
+      <h1>Patterns</h1>
+      <p>{{ site.patterns | size }} composable techniques, grouped by the behavior they install.</p>
+    </header>
+    {% assign cats = site.data.categories | sort: "order" %}
+    <nav class="cat-nav" aria-label="Jump to category">
+      {% for cat in cats %}<a href="#cat-{{ cat.key }}" data-cat="{{ cat.key }}">{{ cat.title | escape }}</a>{% endfor %}
+    </nav>
+    {% for cat in cats %}
+      <section class="cat-section" id="cat-{{ cat.key }}" data-cat="{{ cat.key }}">
+        <h2 class="cat-section__title">{{ cat.title | escape }}</h2>
+        <p class="cat-section__desc">{{ cat.description | escape }}</p>
+        <div class="card-grid">
+          {% assign pats = site.patterns | where: "category", cat.key | sort_natural: "title" %}
+          {% for p in pats %}{% include pattern-card.html pattern=p %}{% endfor %}
+        </div>
+      </section>
+    {% endfor %}
+  </main>
+</div>
