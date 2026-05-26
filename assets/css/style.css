@@ -166,6 +166,7 @@ a:hover { text-decoration: underline; }
 .pattern__related-list li { padding: 5px 0; color: var(--text-muted); line-height: 1.5; }
 .pattern__related-link { color: var(--cat, var(--accent)); font-weight: 600; text-decoration: none; }
 .pattern__related-link:hover { text-decoration: underline; }
+.pattern__related-link i { width: 1.05em; margin-right: 5px; text-align: center; font-size: .95em; }
 .pattern__related-note { color: var(--text-muted); }
 
 .prompt { border: 1px solid var(--prompt-border); border-radius: var(--radius); overflow: hidden; background: var(--prompt-bg); }
