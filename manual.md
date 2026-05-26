@@ -7,7 +7,7 @@ permalink: /manual/
 
 # Manual usage
 
-Prefer to place patterns by hand instead of letting an AI do it? Here's the whole workflow. (To install the Skill and let AI apply patterns for you, see [Install]({{ '/using/' | relative_url }}).)
+Prefer to place patterns by hand instead of letting an AI do it? Here's the whole workflow. (To install the Skill and let AI apply patterns for you, see [Install]({{ '/install/' | relative_url }}).)
 
 ## Build manually
 
@@ -20,7 +20,7 @@ That's it. A pattern is just a well-worded instruction; the catalog saves you fr
 
 ### Choosing patterns
 
-Not sure which to grab? [Browse the catalog]({{ '/patterns/' | relative_url }}) — it's grouped by purpose, so skim the category that fits your skill's job. Most skills need only **two to four** patterns; composing more usually makes a skill worse. Or skip the picking entirely and let an AI choose (see [Install]({{ '/using/' | relative_url }})).
+Not sure which to grab? [Browse the catalog]({{ '/patterns/' | relative_url }}) — it's grouped by purpose, so skim the category that fits your skill's job. Most skills need only **two to four** patterns; composing more usually makes a skill worse. Or skip the picking entirely and let an AI choose (see [Install]({{ '/install/' | relative_url }})).
 
 ### Fill in the brackets
 
@@ -54,4 +54,4 @@ Each block is one pattern, lightly adapted. Together they turn a vague "write me
 
 Patterns are starting points, not law. Run your Skill, watch where the agent drifts, and tighten the wording — make a criterion stricter, add a placeholder, or drop a step that's overkill. The prompts in the catalog are written to be edited.
 
-[Browse the patterns →]({{ '/patterns/' | relative_url }}) · [Install the Skill →]({{ '/using/' | relative_url }})
+[Browse the patterns →]({{ '/patterns/' | relative_url }}) · [Install the Skill →]({{ '/install/' | relative_url }})

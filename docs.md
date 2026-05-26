@@ -30,4 +30,4 @@ Patterns are grouped by what they're *for*:
 
 Every pattern in the catalog has the same shape: a one-line **definition**, a short list of **what it adds**, and a copyable **example prompt partial** — a ready-to-use snippet with `[bracketed]` slots you fill in with your specifics.
 
-[Browse the patterns →]({{ '/patterns/' | relative_url }}) · [Install the Skill →]({{ '/using/' | relative_url }})
+[Browse the patterns →]({{ '/patterns/' | relative_url }}) · [Install the Skill →]({{ '/install/' | relative_url }})
