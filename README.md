@@ -2,7 +2,7 @@
 
 A Claude / Codex / Gemini plugin that helps you **build better Skills**. When you create or improve an agent Skill, it works out which skill-design patterns the skill's purpose calls for and weaves them in — so you don't have to hand-pick them.
 
-It ships the **skill-patterns** skill, backed by a catalog of 34 reusable behavioral patterns. Browse the full catalog at **[skillpatterns.ai](https://skillpatterns.ai)**.
+It ships the **skill-patterns** skill, backed by a catalog of 37 reusable behavioral patterns. Browse the full catalog at **[skillpatterns.ai](https://skillpatterns.ai)**.
 
 ## What it does
 

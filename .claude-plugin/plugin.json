@@ -1,8 +1,8 @@
 {
   "name": "skill-patterns",
   "displayName": "Skill Patterns",
-  "description": "Applies the right skill-design patterns when you create or improve an agent Skill, so you don't have to hand-pick them. Ships a catalog of 34 reusable behavioral patterns.",
-  "version": "1.0.0",
+  "description": "Applies the right skill-design patterns when you create or improve an agent Skill, so you don't have to hand-pick them. Ships a catalog of 37 reusable behavioral patterns.",
+  "version": "1.1.0",
   "author": { "name": "Matt Batchelder", "url": "https://github.com/borkweb" },
   "homepage": "https://skillpatterns.ai",
   "repository": "https://github.com/borkweb/skill-patterns",
