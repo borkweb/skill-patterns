@@ -115,9 +115,9 @@ a:hover { text-decoration: underline; }
 .sidebar {
   position: sticky; top: var(--header-h); align-self: flex-start;
   width: var(--sidebar-w); flex: 0 0 var(--sidebar-w);
-  height: calc(100vh - var(--header-h)); overflow-y: auto;
   padding: 22px 16px; border-right: 1px solid var(--border);
 }
+@media (min-width: 821px) { .sidebar-search { position: static; } }
 .search input {
   width: 100%; padding: 8px 12px; font-size: 14px; font-family: var(--sans);
   border: 1px solid var(--border-strong); border-radius: 8px;
