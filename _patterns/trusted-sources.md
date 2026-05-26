@@ -9,6 +9,9 @@ adds:
   - "Cites which source supports each claim"
   - "Defers to specified sources when they conflict with general knowledge"
   - "Flags gaps instead of filling them silently"
+related:
+  - slug: scoped-conventions
+    note: "Trusted-sources anchors facts in authoritative references; scoped-conventions packages how-to conventions for a tool or domain."
 prompt: |
   Ground this Skill in the following authoritative sources: [URLs / paths / docs]. When the task touches this area, consult these first. If your training contradicts these sources, the sources win. Cite which source each claim comes from. If a source is missing or ambiguous, flag the gap rather than filling it from prior knowledge.
 ---

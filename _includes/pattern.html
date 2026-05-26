@@ -13,4 +13,12 @@
     </div>
     <pre class="prompt__body" id="prompt-{{ p.slug }}">{{ p.prompt }}</pre>
   </div>
+  {% if p.related %}
+  <div class="pattern__related">
+    <h4 class="pattern__related-label">Related — and how this differs</h4>
+    <ul class="pattern__related-list">
+      {% for rel in p.related %}{% assign rp = site.patterns | where: "slug", rel.slug | first %}{% if rp %}<li><a class="pattern__related-link" href="{{ rp.url | relative_url }}">{{ rp.title }}</a>{% if rel.note %} <span class="pattern__related-note">— {{ rel.note }}</span>{% endif %}</li>{% endif %}{% endfor %}
+    </ul>
+  </div>
+  {% endif %}
 </article>

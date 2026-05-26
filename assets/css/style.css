@@ -160,6 +160,13 @@ a:hover { text-decoration: underline; }
 .pattern__adds { list-style: none; margin: 0 0 16px; padding: 0; }
 .pattern__adds li { position: relative; padding: 4px 0 4px 22px; color: var(--text-muted); }
 .pattern__adds li::before { content: "+"; position: absolute; left: 0; color: var(--cat, var(--accent)); font-weight: 800; }
+.pattern__related { margin: 18px 0 0; }
+.pattern__related-label { font-size: 12px; text-transform: uppercase; letter-spacing: .05em; color: var(--text); margin: 0 0 8px; }
+.pattern__related-list { list-style: none; margin: 0; padding: 0; }
+.pattern__related-list li { padding: 5px 0; color: var(--text-muted); line-height: 1.5; }
+.pattern__related-link { color: var(--cat, var(--accent)); font-weight: 600; text-decoration: none; }
+.pattern__related-link:hover { text-decoration: underline; }
+.pattern__related-note { color: var(--text-muted); }
 
 .prompt { border: 1px solid var(--prompt-border); border-radius: var(--radius); overflow: hidden; background: var(--prompt-bg); }
 .prompt__head { display: flex; justify-content: space-between; align-items: center; padding: 9px 14px; background: var(--prompt-bg-head); border-bottom: 1px solid var(--prompt-border); }
