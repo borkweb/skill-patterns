@@ -1,16 +1,14 @@
-<!-- Generated from https://skillpatterns.ai/llms.txt — regenerate when the catalog changes; do not hand-edit. -->
-
 # Skill Patterns
 
-> Reusable, composable techniques for shaping how an AI agent behaves — 33 patterns across 6 categories. When creating or improving a Skill, apply the patterns whose purpose matches the task; each entry includes an example prompt you can adapt. Most skills use 2–4 patterns — don't over-apply. Site: https://skillpatterns.ai/
+> Reusable, composable techniques for shaping how an AI agent behaves — 37 patterns across 6 categories. When creating or improving a Skill, apply the patterns whose purpose matches the task; each entry includes an example prompt you can adapt. Most skills use 2–4 patterns — don't over-apply. Site: https://skillpatterns.ai/
 
 ## Grounding & accuracy
 Keep the agent tethered to truth and honest about what it knows.
 
 ### Confidence calibration
 Requires the agent to mark which parts of its output it's confident about and which are guesses.
-- What it adds: Tags claims by certainty so high-risk pieces are visible at a glance; Distinguishes what's verified against sources from what's inferred or assumed; Tells you where to spend your verification time and where you can move fast.
-- Example prompt: As you produce [output], mark each substantive claim with a confidence level: high (verified against a source or directly observable), medium (inferred from pattern or adjacent evidence), low (filling a gap, best guess, please verify). For low-confidence claims, briefly note what would raise the confidence — a source to check, a test to run, a person to ask. Don't smooth out uncertainty in the final wording; if it's a guess, it should read like one.
+- What it adds: Tags claims by certainty so high-risk pieces are visible at a glance; Distinguishes what's verified against sources from what's inferred or assumed; Tells you where to spend your verification time and where you can move fast; Declines outright when overall confidence is too low — an honest abstention beats a confident guess.
+- Example prompt: As you produce [output], mark each substantive claim with a confidence level: high (verified against a source or directly observable), medium (inferred from pattern or adjacent evidence), low (filling a gap, best guess, please verify). For low-confidence claims, briefly note what would raise the confidence — a source to check, a test to run, a person to ask. Don't smooth out uncertainty in the final wording; if it's a guess, it should read like one. And if your confidence in the answer as a whole is too low to stand behind it, say so and decline rather than dressing up a guess — an honest "I can't answer this confidently, here's what I'd need" beats a confident wrong answer.
 - URL: https://skillpatterns.ai/patterns/confidence-calibration/
 
 ### Exemplars over instruction
@@ -85,6 +83,12 @@ Renders one canonical artifact into multiple downstream forms while preserving t
 - Example prompt: Produce the canonical [artifact: decision doc, spec, research summary] first. Then derive these variants from it: [list: P2 post, Slack summary, exec brief, email update]. Each variant should match the conventions of its channel. Don't re-reason — derive. Note what was cut or compressed in each variant so I can spot if something important got lost.
 - URL: https://skillpatterns.ai/patterns/format-projection/
 
+### Interactive playground
+When the input space is visual or hard to put into words, builds a small self-contained interactive tool that lets you explore the options and hand back structured choices.
+- What it adds: Builds a throwaway interactive artifact instead of asking a long list of text questions; Lets you explore a large, visual, or structural space directly and see choices update live; Returns a structured result — chosen settings, a generated prompt — you can hand straight back.
+- Example prompt: When [the decision space for this task] is large, visual, or hard to pin down in words, don't interrogate me with a long list of questions — build a small self-contained interactive tool (for example, a single HTML file with controls, a live preview, and a copy-out result) that lets me explore the options directly and see them update as I adjust. Give it sensible defaults and a few named presets so it's useful the moment it opens, and have it emit a structured result — the settings I chose, or a ready-to-paste prompt — that I can hand straight back to you. Keep it dependency-free so it works offline.
+- URL: https://skillpatterns.ai/patterns/interactive-playground/
+
 ### Schema-locked output
 Forces output into a strict, validated structure and repairs or rejects anything that doesn't conform.
 - What it adds: Emits output that matches a defined schema or field set exactly; Validates against the schema before returning, and repairs what doesn't fit; Fails loudly when the content can't be made to conform, instead of bending the format.
@@ -96,9 +100,15 @@ Find weaknesses before the work ships.
 
 ### Adversarial pushback
 Pits a challenger persona or parallel agent against the work to expose weaknesses before it ships.
-- What it adds: Argues the strongest case against the proposal, with reasoning; Surfaces assumptions that wouldn't survive scrutiny; Forces defense of choices instead of quiet acceptance.
-- Example prompt: Before finalizing [output], take the role of [adversary: skeptical reviewer, hostile architect, opposing counsel, competitor's CTO]. Argue the strongest case against the proposal. Identify the assumptions most likely to fail, the evidence that's missing, and the decisions that would look wrong in hindsight. Return the pushback and the original work side by side.
+- What it adds: Argues the strongest case against the proposal, with reasoning; Surfaces assumptions that wouldn't survive scrutiny; Forces defense of choices instead of quiet acceptance; Can run blind — the challenger sees only the artifact, not your reasoning, removing the pull to agree.
+- Example prompt: Before finalizing [output], take the role of [adversary: skeptical reviewer, hostile architect, opposing counsel, competitor's CTO]. Argue the strongest case against the proposal. Identify the assumptions most likely to fail, the evidence that's missing, and the decisions that would look wrong in hindsight. For a sharper check, run it blind: give the challenger only the finished artifact and the task — not your reasoning or how you got here — so it judges the work cold, the way a reader with none of your context would. Return the pushback and the original work side by side.
 - URL: https://skillpatterns.ai/patterns/adversarial-pushback/
+
+### Best-of-N
+Runs the same problem several times independently and converges on the consensus — a majority vote, or the verified top candidate — so a single bad sample can't decide the answer.
+- What it adds: Attacks one problem with several independent passes — varied angles, no shared reasoning between runs; Converges by majority vote, or by ranking the attempts and re-verifying the strongest; Aggregates for reliability — it isn't generating options for you to choose between.
+- Example prompt: For [a high-stakes or error-prone task] where a single attempt can quietly be wrong, run it [N] times independently — varied starting angles, no shared reasoning between runs — rather than trusting one pass. Then aggregate: for a definite answer, take the majority vote; for open-ended work, rank the candidates and verify the strongest one. Treat convergence across independent attempts as the real signal and a lone dissent as likely noise. If the attempts don't converge, say so and surface the disagreement instead of quietly picking one and moving on.
+- URL: https://skillpatterns.ai/patterns/best-of-n/
 
 ### Disconfirmation
 Has the agent actively seek evidence that would disprove its current hypothesis, and state what would change its mind.
@@ -190,6 +200,12 @@ Defines what the Skill should not do and declines or escalates out-of-scope or u
 ## Composition
 Structure work across multiple steps and skills — sequencing, shared state, and staged context.
 
+### Capability detection
+Probes what the runtime actually offers — subagents, a browser, the project's language, specific tools — and takes the path that fits, instead of assuming one environment.
+- What it adds: Checks which tools, integrations, and capabilities are present before committing to an approach; Branches to the path that fits what's available rather than failing or assuming a default environment; Falls back to a sensible default — and says which path it took — when the environment can't be determined.
+- Example prompt: Before committing to an approach for [task], detect what this environment actually provides — [e.g. subagents, a display or browser, the project's language, a particular integration or MCP server] — rather than assuming. Then take the path that fits: [if X is available, do A; otherwise do B]. State which capabilities you found and which path you're taking, so the choice is visible and I can redirect it. If you can't tell what's available, pick the safe default, name it, and proceed rather than stalling or guessing wrong.
+- URL: https://skillpatterns.ai/patterns/capability-detection/
+
 ### Decomposition
 Breaks a complex task into smaller, well-scoped sub-tasks and tackles them one at a time.
 - What it adds: Splits the problem into parts before attempting any of it; Defines each sub-task's input and output so the pieces fit back together; Surfaces the breakdown so you can correct the plan before work starts.
@@ -219,3 +235,9 @@ Composes this Skill with others into a sequenced flow.
 - What it adds: Triggers other Skills in a defined order; Passes outputs from one stage as inputs to the next; Surfaces workflow state so you can see where you are in the chain.
 - Example prompt: Run this as a workflow: [Skill 1] → [Skill 2] → [Skill 3]. Pass the output of each stage as input to the next. After each stage, summarize what was produced and confirm before moving on. If a stage fails its checks, stop and surface the issue rather than continuing.
 - URL: https://skillpatterns.ai/patterns/skill-chaining/
+
+### Tool offloading
+Hands deterministic, repetitive, or error-prone work to a bundled script the agent runs but never reads — keeping the logic reliable and out of the context window.
+- What it adds: Delegates fiddly, deterministic steps to a script instead of re-deriving them in prose each run; Calls the script as a black box — runs it, reads its output, never loads its source into context; Reserves the context window for judgment, not boilerplate the same code can do identically every time.
+- Example prompt: For [the deterministic, repetitive, or error-prone part of this task — e.g. validating a file, transforming data, assembling a document], use the bundled script at [path] rather than writing the logic inline or re-deriving it each time. Run it with `--help` first to learn its usage, then call it directly and work from its output. Don't read the script's source into context unless it actually fails and you need to debug it — it exists to be run, not ingested, and loading it just burns the window on code that already works. If no such script exists yet but you keep writing the same helper across runs, that's the signal to create one and reuse it.
+- URL: https://skillpatterns.ai/patterns/tool-offloading/
