@@ -9,6 +9,7 @@ adds:
   - "Argues the strongest case against the proposal, with reasoning"
   - "Surfaces assumptions that wouldn't survive scrutiny"
   - "Forces defense of choices instead of quiet acceptance"
+  - "Can run blind — the challenger sees only the artifact, not your reasoning, removing the pull to agree"
 prompt: |
-  Before finalizing [output], take the role of [adversary: skeptical reviewer, hostile architect, opposing counsel, competitor's CTO]. Argue the strongest case against the proposal. Identify the assumptions most likely to fail, the evidence that's missing, and the decisions that would look wrong in hindsight. Return the pushback and the original work side by side.
+  Before finalizing [output], take the role of [adversary: skeptical reviewer, hostile architect, opposing counsel, competitor's CTO]. Argue the strongest case against the proposal. Identify the assumptions most likely to fail, the evidence that's missing, and the decisions that would look wrong in hindsight. For a sharper check, run it blind: give the challenger only the finished artifact and the task — not your reasoning or how you got here — so it judges the work cold, the way a reader with none of your context would. Return the pushback and the original work side by side.
 ---
