@@ -17,6 +17,13 @@ Using a Skill makes pattern selection a breeze. Grab it and add it to your Skill
 npx skills add borkweb/skill-patterns --skill skill-patterns
 ```
 
+In **Claude Code**, you can install it as a plugin instead — add the marketplace, then install the plugin:
+
+```
+/plugin marketplace add borkweb/skill-patterns
+/plugin install skill-patterns@skill-patterns
+```
+
 ## Build with AI
 
 ### Using the Skill
