@@ -1,38 +1,32 @@
 # AGENTS.md
 
-Guidance for AI agents (and humans) working in this repository.
+Guidance for AI agents (and humans) working on the **`gh-pages`** (website) branch.
 
 ## Two branches, two jobs
 
-- **`main`** (default) — the installable **plugin** for Claude / Codex / Gemini. Holds the `.claude-plugin/` manifests and the `skills/skill-patterns/` skill.
-- **`gh-pages`** — the **website** that publishes [skillpatterns.ai](https://skillpatterns.ai) (a Jekyll site). It holds the **canonical pattern catalog** in `_patterns/*.md` and generates `/llms.txt` and `/patterns.json` on build.
+- **`main`** (default) — the canonical home of the **catalog** *and* the installable plugin. Patterns are authored there as `patterns/*.md` + `categories.yml`, and `scripts/build.mjs` generates the snapshot, `llms.txt`, and `patterns.json`.
+- **`gh-pages`** (this branch) — the **Jekyll website** that publishes [skillpatterns.ai](https://skillpatterns.ai). Its catalog inputs are **generated** and synced in from `main` by the `Sync catalog` workflow.
 
-## The catalog lives on gh-pages; the plugin carries a snapshot
+## The catalog is generated — edit it on `main`
 
-The source of truth for the patterns is `_patterns/*.md` on **gh-pages**. The plugin on **main** ships a *generated snapshot* at `skills/skill-patterns/references/patterns.md` — never hand-edit it.
+These files are produced by `scripts/build.mjs` on `main` and pushed here by CI on every merge to `main`. **Do not hand-edit them** — your change will be overwritten on the next sync:
 
-## ⚠️ On ANY catalog change, update BOTH branches
+- `_patterns/*.md`
+- `_data/categories.yml`
+- `llms.txt` (a static file now — no longer a Liquid template)
+- `patterns.json` (likewise)
 
-When you add, edit, rename, or remove a pattern (or change categories), do both:
+To change a pattern or category, edit `patterns/<slug>.md` (or `categories.yml`) on `main` and open a PR there.
 
-1. **`gh-pages`** — edit the source in `_patterns/` (and `_data/categories.yml` for category changes), then rebuild and verify:
-   ```
-   bundle exec jekyll build
-   ```
-2. **`main`** — regenerate the plugin's snapshot from the rebuilt catalog and commit:
-   ```
-   curl -s https://skillpatterns.ai/llms.txt > skills/skill-patterns/references/patterns.md
-   ```
-   (Before the site is live, copy the freshly built `_site/llms.txt` instead.)
+## Hand-editable on `gh-pages`
 
-Commit on **both** branches. A change that lands on only one branch leaves the site and the plugin out of sync.
+The site chrome only — these live here and are edited here:
 
-## Conventions
+- `_layouts/`, `_includes/`, `index.*`, `install.md`, styles/assets
+- `_config.yml`, `CNAME`, `robots.txt`, analytics
 
-- Patterns sort **alphabetically by title** within their category; the `order` frontmatter field is unused.
-- `/llms.txt` and `/patterns.json` regenerate from `_patterns/` automatically on build — don't edit them by hand.
-- Pattern frontmatter: `title`, `slug`, `icon` (FontAwesome Free), `category` (a key in `_data/categories.yml`), `summary`, `adds` (list), `prompt` (block scalar).
+Jekyll still renders the per-pattern pages (`/patterns/:slug/`) and category indexes from the synced `_patterns` collection + `_layouts/pattern`.
 
 ## Deploy
 
-GitHub Pages builds from the **`gh-pages`** branch (`CNAME` → skillpatterns.ai lives there). `main` is the default branch and the plugin source.
+GitHub Pages builds from this **`gh-pages`** branch (`CNAME` → skillpatterns.ai). The `Sync catalog` workflow on `main` (`.github/workflows/sync-catalog.yml`) regenerates and pushes the catalog files here, which triggers the Pages rebuild.
