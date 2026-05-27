@@ -1,0 +1,13 @@
+{
+  "name": "skill-patterns-catalog",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Build tooling for the Skill Patterns catalog (generates the plugin snapshot, llms.txt, and patterns.json).",
+  "scripts": {
+    "build": "node scripts/build.mjs"
+  },
+  "devDependencies": {
+    "js-yaml": "^4.1.0"
+  }
+}
