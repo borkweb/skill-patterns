@@ -24,6 +24,11 @@ function readFrontmatter(file) {
 }
 
 const categories = yaml.load(readFileSync(join(ROOT, 'categories.yml'), 'utf8'));
+for (const c of categories) {
+  if (typeof c.order !== 'number') {
+    throw new Error(`categories.yml: category '${c.key}' is missing a numeric 'order'`);
+  }
+}
 const sortedCats = [...categories].sort((a, b) => a.order - b.order);
 
 const dir = join(ROOT, 'patterns');
@@ -35,6 +40,16 @@ const patterns = readdirSync(dir)
     return data;
   });
 
+const slugToFile = new Map();
+for (const p of patterns) {
+  if (slugToFile.has(p.slug)) {
+    throw new Error(
+      `${p._base}.md: duplicate slug '${p.slug}' (also used by ${slugToFile.get(p.slug)}.md)`
+    );
+  }
+  slugToFile.set(p.slug, p._base);
+}
+
 const titleBySlug = new Map(patterns.map((p) => [p.slug, p.title]));
 const catKeys = new Set(categories.map((c) => c.key));
 
@@ -42,10 +57,22 @@ for (const p of patterns) {
   for (const k of REQUIRED) {
     if (p[k] == null) throw new Error(`${p._base}.md: missing required field '${k}'`);
   }
+  if (p.slug !== p._base) {
+    throw new Error(`${p._base}.md: slug '${p.slug}' must match the filename`);
+  }
+  if (!Array.isArray(p.adds)) {
+    throw new Error(`${p._base}.md: 'adds' must be a list`);
+  }
   if (!catKeys.has(p.category)) {
     throw new Error(`${p._base}.md: unknown category '${p.category}'`);
   }
   for (const r of p.related ?? []) {
+    if (typeof r.slug !== 'string' || r.slug === '') {
+      throw new Error(`${p._base}.md: related entry missing 'slug'`);
+    }
+    if (typeof r.note !== 'string' || r.note === '') {
+      throw new Error(`${p._base}.md: related entry missing 'note'`);
+    }
     if (!titleBySlug.has(r.slug)) {
       throw new Error(`${p._base}.md: related slug '${r.slug}' does not exist`);
     }
