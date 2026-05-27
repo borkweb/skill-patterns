@@ -28,6 +28,7 @@ Packages a specific tool, library, or domain's conventions as on-demand knowledg
 - What it adds: Encodes the right way to use a specific tool or library, not generic advice; Activates only when the task actually touches that area; Keeps the detailed reference out of context until it's needed.
 - Example prompt: When the task involves [tool / library / domain], follow these conventions: [rules, or point to a reference doc]. Use this specific guidance rather than generic best practices, and only pull in the detailed reference when the task actually touches [area]. If a convention here conflicts with your default approach, this guidance wins. If the task is outside [area], ignore this.
 - URL: https://skillpatterns.ai/patterns/scoped-conventions/
+- Related: Trusted sources — Scoped-conventions encodes procedures for a tool or domain; trusted-sources anchors facts in cited authoritative references.
 
 ### Signal vs. noise
 Forces an explicit list of which sources count as signal versus noise before analysis — including the noise you're most tempted to lean on anyway.
@@ -40,6 +41,7 @@ Anchors the agent in specific authoritative references so it stops improvising f
 - What it adds: Cites which source supports each claim; Defers to specified sources when they conflict with general knowledge; Flags gaps instead of filling them silently.
 - Example prompt: Ground this Skill in the following authoritative sources: [URLs / paths / docs]. When the task touches this area, consult these first. If your training contradicts these sources, the sources win. Cite which source each claim comes from. If a source is missing or ambiguous, flag the gap rather than filling it from prior knowledge.
 - URL: https://skillpatterns.ai/patterns/trusted-sources/
+- Related: Scoped conventions — Trusted-sources anchors facts in authoritative references; scoped-conventions packages how-to conventions for a tool or domain.
 
 ## Decision-making
 Structure how choices get made and recorded.
@@ -103,48 +105,56 @@ Pits a challenger persona or parallel agent against the work to expose weaknesse
 - What it adds: Argues the strongest case against the proposal, with reasoning; Surfaces assumptions that wouldn't survive scrutiny; Forces defense of choices instead of quiet acceptance; Can run blind — the challenger sees only the artifact, not your reasoning, removing the pull to agree.
 - Example prompt: Before finalizing [output], take the role of [adversary: skeptical reviewer, hostile architect, opposing counsel, competitor's CTO]. Argue the strongest case against the proposal. Identify the assumptions most likely to fail, the evidence that's missing, and the decisions that would look wrong in hindsight. For a sharper check, run it blind: give the challenger only the finished artifact and the task — not your reasoning or how you got here — so it judges the work cold, the way a reader with none of your context would. Return the pushback and the original work side by side.
 - URL: https://skillpatterns.ai/patterns/adversarial-pushback/
+- Related: Premortem — Premortem imagines it already failed and works backward; pushback argues against it in the present.; Disconfirmation — Disconfirmation hunts evidence that falsifies one claim; pushback attacks the whole proposal from an adversary's role.; Specialist fan-out — Several narrow critics in parallel is a fan-out of this single-challenger move.
 
 ### Best-of-N
 Runs the same problem several times independently and converges on the consensus — a majority vote, or the verified top candidate — so a single bad sample can't decide the answer.
 - What it adds: Attacks one problem with several independent passes — varied angles, no shared reasoning between runs; Converges by majority vote, or by ranking the attempts and re-verifying the strongest; Aggregates for reliability — it isn't generating options for you to choose between.
 - Example prompt: For [a high-stakes or error-prone task] where a single attempt can quietly be wrong, run it [N] times independently — varied starting angles, no shared reasoning between runs — rather than trusting one pass. Then aggregate: for a definite answer, take the majority vote; for open-ended work, rank the candidates and verify the strongest one. Treat convergence across independent attempts as the real signal and a lone dissent as likely noise. If the attempts don't converge, say so and surface the disagreement instead of quietly picking one and moving on.
 - URL: https://skillpatterns.ai/patterns/best-of-n/
+- Related: Specialist fan-out — Fan-out runs different lenses and merges for coverage; Best-of-N runs the same problem and votes for reliability.; Bounded option generation — Bounded options surface distinct choices for you to pick; Best-of-N aggregates internally to a single answer.
 
 ### Disconfirmation
 Actively hunts for the evidence that would falsify the current hypothesis — and names the one observation that would change the conclusion.
 - What it adds: Looks for the evidence that would falsify the current belief, not just confirm it; States explicitly what observation would change the conclusion; Treats a belief with no disconfirming test as an assumption, not a finding.
 - Example prompt: For [hypothesis / conclusion], don't just gather support for it — actively look for the evidence that would prove it wrong. State, in one line, what observation or result would change your mind. If nothing could, say so and flag it as an assumption rather than a finding. Report the disconfirming checks you ran alongside the conclusion.
 - URL: https://skillpatterns.ai/patterns/disconfirmation/
+- Related: Adversarial pushback — Pushback role-plays an adversary against the whole proposal; disconfirmation tests one hypothesis for what would falsify it.; Premortem — Premortem imagines a finished failure and works backward; disconfirmation seeks a falsifying observation now.
 
 ### Encoded reasoning
 Bakes the review rubric and quality gates into the Skill — it drafts, checks its own work against the criteria, and revises before returning.
 - What it adds: Runs output against a defined rubric — or, absent one, the brief and what a strong reviewer would notice; Reports which criteria passed, failed, or are uncertain, and names the weakest reasoning and most fragile assumption; Holds back work that fails a hard criterion — revises, retries, and returns a note on what changed.
 - Example prompt: Before returning [output], check your own work against these criteria: [rubric items — or, absent a rubric, the original brief and what a strong reviewer would notice]. Report which criteria passed, failed, or are uncertain, and name the weakest reasoning and the most fragile assumption. Don't return work that fails a hard criterion — revise and retry. Return the revised output with a brief note on what changed and why.
 - URL: https://skillpatterns.ai/patterns/encoded-reasoning/
+- Related: Gap-to-target scoring — Gap-to-target is the numeric variant — score 0–10, define the 10, re-score; encoded-reasoning gates on a pass/fail rubric.
 
 ### Failure mode preloading
 Names the specific ways this kind of work tends to go wrong, so the agent watches for them.
 - What it adds: Lists the known failure modes for this kind of task up front; Watches for each one while working, not only at the end; Flags when the work starts drifting toward a named failure mode.
 - Example prompt: Before starting [task], name the specific ways this kind of work usually goes wrong — [known failure modes, or ask me for them]. Keep that list in view as you work and check against it as you go, not only at the end. If the work starts drifting toward one of these failure modes, stop and flag it rather than pushing through. In the result, note which failure modes you actively guarded against.
 - URL: https://skillpatterns.ai/patterns/failure-mode-preloading/
+- Related: Premortem — Premortem invents specific failure stories for this work; this loads the known, recurring failure types up front to watch for.
 
 ### Gap-to-target scoring
 Scores each dimension on a 0–10 scale, describes concretely what a 10 would look like, closes the gap, then re-scores to show the movement.
 - What it adds: Rates each dimension numerically instead of a vague pass/fail; Spells out what a perfect 10 looks like for this specific work; Re-scores after improvements so the gain is visible.
 - Example prompt: Evaluate [work] by scoring each of these dimensions 0–10: [dimensions]. For any score below 10, describe concretely what a 10 would look like for this specific case, then do the work to close the gap. Re-score afterward and show the before → after for each dimension. Keep the final verdict consistent with the scores.
 - URL: https://skillpatterns.ai/patterns/gap-to-target-scoring/
+- Related: Encoded reasoning — Encoded-reasoning gates on a pass/fail rubric and revises; gap-to-target scores 0–10 and shows the before→after movement.
 
 ### Premortem
 Imagines the work has already shipped and failed, then reasons backward to the cause — and the assumption behind it.
 - What it adds: Generates the most plausible failure stories before the work ships; Surfaces risks that wouldn't appear in a forward-looking review; Names which current assumptions, if wrong, cause the failure.
 - Example prompt: Before finalizing [the plan / the decision / the proposal], run a premortem. Imagine it's [6 months / a year / one quarter] from now and this work has clearly failed. Generate the 3 most plausible failure stories — what went wrong, in what order, and why it wasn't caught in time. For each, name the assumption in the current plan that, if wrong, made the failure inevitable. Return the failure stories alongside the original work, with the riskiest assumptions called out.
 - URL: https://skillpatterns.ai/patterns/premortem/
+- Related: Adversarial pushback — Pushback argues against the work in the present; premortem imagines it already failed and traces why.; Failure mode preloading — Failure-mode-preloading lists known, recurring failure types up front; premortem invents specific failure stories for this work.
 
 ### Prove it works
 Before claiming the work is done, the Skill proves it actually happened — running it, checking output, showing evidence — instead of asserting completion.
 - What it adds: Runs the verification before saying 'done', not after; Shows the evidence (output, test result, screenshot) behind any success claim; Treats 'this looks finished' as a prompt to test, not to stop.
 - Example prompt: Before you claim [task] is complete, actually verify it: run it, check the output, and show me the evidence. Don't say "done", "fixed", or "working" without the result that proves it. If you can't verify a claim, mark it unverified rather than asserting it. Treat "this looks finished" as a signal to test, not to stop.
 - URL: https://skillpatterns.ai/patterns/prove-it-works/
+- Related: Characterization baseline — For behavior-preserving changes, characterization baseline pins the current behavior up front; prove-it-works is the general end-of-task evidence check.
 
 ### Self-tuning
 After a run, the Skill proposes concrete edits to its own instructions when they were unclear or incomplete — and stays silent when nothing needs changing.
@@ -178,6 +188,7 @@ Draws the line between what the agent settles on its own and what it pauses to c
 - What it adds: Stops before destructive, irreversible, or high-stakes steps and waits for confirmation; Decides routine, reversible choices on its own instead of asking about every fork; Keeps a short log of the calls it made autonomously, so they can be reviewed after.
 - Example prompt: Draw a clear line between what you decide on your own and what you bring to me. Decide routine, reversible, low-stakes choices yourself — using these principles: [principles] — and keep a short running log of those calls and why, so I can review them later. Before anything destructive, irreversible, or high-stakes — [deploying, sending, deleting, committing, finalizing, taste-defining choices] — pause, summarize what you're about to do and why, and wait for my confirmation, redirect, or override. When you're unsure which side a step falls on, treat it as a judgment call and ask. [When presenting options, let me keep the default, give me two more, and enter my own.]
 - URL: https://skillpatterns.ai/patterns/human-in-the-loop/
+- Related: Scope guardrails — Scope-guardrails declines out-of-scope or unsafe requests outright; this pauses on in-scope but high-stakes steps.; Clarification gate — Clarification-gate pauses before starting when the brief is ambiguous; this pauses before acting on a risky step.
 
 ### Role priming
 Puts the agent in a specific stance for the duration of the Skill so its reasoning carries that perspective.
@@ -199,12 +210,14 @@ Probes what the runtime actually offers — subagents, a browser, the project's 
 - What it adds: Checks which tools, integrations, and capabilities are present before committing to an approach; Branches to the path that fits what's available rather than failing or assuming a default environment; Falls back to a sensible default — and says which path it took — when the environment can't be determined.
 - Example prompt: Before committing to an approach for [task], detect what this environment actually provides — [e.g. subagents, a display or browser, the project's language, a particular integration or MCP server] — rather than assuming. Then take the path that fits: [if X is available, do A; otherwise do B]. State which capabilities you found and which path you're taking, so the choice is visible and I can redirect it. If you can't tell what's available, pick the safe default, name it, and proceed rather than stalling or guessing wrong.
 - URL: https://skillpatterns.ai/patterns/capability-detection/
+- Related: Graceful degradation — Graceful-degradation handles a missing input with a partial result; capability-detection probes the environment and picks a different full path.
 
 ### Characterization baseline
 Before changing existing behavior, pins it down as a test contract — concrete input→output pairs captured from the current code — then makes the change and proves every pin still passes.
 - What it adds: Captures the current observable behavior as a runnable baseline before touching anything; Treats those captured cases as the definition of done for the change; Proves equivalence after — the change passes the baseline, or each difference is deliberate and named.
 - Example prompt: Before you change [existing code or behavior — a refactor, rename, migration, optimization, or dependency upgrade], pin down what it does now. First, capture the current observable behavior as a baseline: characterization tests (concrete input → expected-output pairs read off the existing code — what it actually does, not what you think it should do), or a golden-master snapshot of its outputs. Treat that baseline as the definition of done. Then make the change and run the baseline against the new version — it must pass unchanged. If some output legitimately should differ, call out each deviation and why it's intended; don't quietly update the baseline to match the new behavior. The goal is to change the form while proving the behavior held.
 - URL: https://skillpatterns.ai/patterns/characterization-baseline/
+- Related: Prove it works — Prove-it-works verifies at the end that the work works; this captures the current behavior up front, then proves the change preserved it.
 
 ### Decomposition
 Breaks a complex task into smaller, well-scoped sub-tasks and tackles them one at a time.
@@ -241,9 +254,11 @@ Splits a review or analysis across several agents running in parallel, each with
 - What it adds: Runs several specialists at once — each owning a distinct aspect — instead of one generalist pass; Dispatches only the lenses the work actually calls for; Merges and de-duplicates complementary findings into one ranked result — coverage, not a vote.
 - Example prompt: For [reviewing / analyzing / mapping] [target] where several distinct concerns matter, don't make one pass try to cover everything. Fan out: launch a separate agent per lens — [e.g. correctness, security, performance, test coverage, type design] — running in parallel, each focused only on its aspect and returning findings with specific evidence ([file:line], quotes). Dispatch only the lenses the work actually calls for. Then merge: collect every agent's findings, de-duplicate the overlaps, and synthesize one ranked result. The point is coverage — each agent catches what the others miss — not running the same check several times to vote on it.
 - URL: https://skillpatterns.ai/patterns/specialist-fan-out/
+- Related: Best-of-N — Best-of-N runs the same problem redundantly and votes for reliability; fan-out runs different lenses and merges for coverage.; Decomposition — Decomposition splits work into sequential sub-tasks for one worker; fan-out runs specialists in parallel, then synthesizes.; Adversarial pushback — A panel of narrow critics is a fan-out aimed at review; adversarial-pushback is the single-challenger case.
 
 ### Tool offloading
 Hands deterministic, repetitive, or error-prone work to a bundled script the agent runs but never reads — keeping the logic reliable and out of the context window.
 - What it adds: Delegates fiddly, deterministic steps to a script instead of re-deriving them in prose each run; Calls the script as a black box — runs it, reads its output, never loads its source into context; Reserves the context window for judgment, not boilerplate the same code can do identically every time.
 - Example prompt: For [the deterministic, repetitive, or error-prone part of this task — e.g. validating a file, transforming data, assembling a document], use the bundled script at [path] rather than writing the logic inline or re-deriving it each time. Run it with `--help` first to learn its usage, then call it directly and work from its output. Don't read the script's source into context unless it actually fails and you need to debug it — it exists to be run, not ingested, and loading it just burns the window on code that already works. If no such script exists yet but you keep writing the same helper across runs, that's the signal to create one and reuse it.
 - URL: https://skillpatterns.ai/patterns/tool-offloading/
+- Related: Progressive disclosure — Progressive-disclosure loads reference docs in stages; tool-offloading runs scripts as black boxes and never loads their source.

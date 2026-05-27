@@ -1,0 +1,24 @@
+- key: grounding
+  title: "Grounding & accuracy"
+  description: "Keep the agent tethered to truth and honest about what it knows."
+  order: 1
+- key: decision
+  title: "Decision-making"
+  description: "Structure how choices get made and recorded."
+  order: 2
+- key: output
+  title: "Output shaping"
+  description: "Control the form and structure of what comes out."
+  order: 3
+- key: critique
+  title: "Critique & stress-testing"
+  description: "Find weaknesses before the work ships."
+  order: 4
+- key: control
+  title: "Control"
+  description: "Govern how the agent behaves within a task — when it pauses, asks, stops, and the stance it takes."
+  order: 5
+- key: composition
+  title: "Composition"
+  description: "Structure work across multiple steps and skills — sequencing, shared state, and staged context."
+  order: 6

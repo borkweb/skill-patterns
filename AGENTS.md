@@ -4,35 +4,29 @@ Guidance for AI agents (and humans) working in this repository.
 
 ## Two branches, two jobs
 
-- **`main`** (default) — the installable **plugin** for Claude / Codex / Gemini. Holds the `.claude-plugin/` manifests and the `skills/skill-patterns/` skill.
-- **`gh-pages`** — the **website** that publishes [skillpatterns.ai](https://skillpatterns.ai) (a Jekyll site). It holds the **canonical pattern catalog** in `_patterns/*.md` and generates `/llms.txt` and `/patterns.json` on build.
+- **`main`** (default) — the canonical home of the **catalog** *and* the installable **plugin** for Claude / Codex / Gemini. Holds `patterns/*.md` (the catalog source), `categories.yml`, the generator `scripts/build.mjs`, the `.claude-plugin/` manifests, and `skills/skill-patterns/`.
+- **`gh-pages`** — the **website** that publishes [skillpatterns.ai](https://skillpatterns.ai) (a Jekyll site). Its catalog inputs (`_patterns/`, `_data/categories.yml`, `llms.txt`, `patterns.json`) are **generated** from `main` and synced in by CI. Do not hand-edit them there.
 
-## The catalog lives on gh-pages; the plugin carries a snapshot
+## Adding or editing a pattern
 
-The source of truth for the patterns is `_patterns/*.md` on **gh-pages**. The plugin on **main** ships a *generated snapshot* at `skills/skill-patterns/references/patterns.md` — never hand-edit it.
+1. Edit (or add) **one file** in `patterns/` on `main`. Frontmatter: `title`, `slug` (must match the filename), `icon` (FontAwesome Free), `category` (a key in `categories.yml`), `summary`, `adds` (list), `related` (list of `{slug, note}`, optional), `prompt` (block scalar).
+2. Run `npm run build` — regenerates the plugin snapshot at `skills/skill-patterns/references/patterns.md` (and `build/llms.txt`, `build/patterns.json`).
+3. Open **one PR** against `main`. The `Sync catalog` workflow's `snapshot-check` job fails the PR if you skipped step 2. On merge, the `sync-to-pages` job regenerates and pushes `_patterns/`, `_data/categories.yml`, `llms.txt`, and `patterns.json` to `gh-pages`, and the site rebuilds.
 
-## ⚠️ On ANY catalog change, update BOTH branches
+No Jekyll, no second branch to edit.
 
-When you add, edit, rename, or remove a pattern (or change categories), do both:
+## Never hand-edit generated files
 
-1. **`gh-pages`** — edit the source in `_patterns/` (and `_data/categories.yml` for category changes), then rebuild and verify:
-   ```
-   bundle exec jekyll build
-   ```
-2. **`main`** — regenerate the plugin's snapshot from the rebuilt catalog and commit:
-   ```
-   curl -s https://skillpatterns.ai/llms.txt > skills/skill-patterns/references/patterns.md
-   ```
-   (Before the site is live, copy the freshly built `_site/llms.txt` instead.)
+All produced by `scripts/build.mjs` — edit `patterns/` + `categories.yml` and rebuild:
 
-Commit on **both** branches. A change that lands on only one branch leaves the site and the plugin out of sync.
+- on `main`: `skills/skill-patterns/references/patterns.md`
+- on `gh-pages`: `_patterns/*.md`, `_data/categories.yml`, `llms.txt`, `patterns.json`
 
 ## Conventions
 
-- Patterns sort **alphabetically by title** within their category; the `order` frontmatter field is unused.
-- `/llms.txt` and `/patterns.json` regenerate from `_patterns/` automatically on build — don't edit them by hand.
-- Pattern frontmatter: `title`, `slug`, `icon` (FontAwesome Free), `category` (a key in `_data/categories.yml`), `summary`, `adds` (list), `prompt` (block scalar).
+- Patterns sort **alphabetically by title** within their category; the pattern `order` field is unused. Category order comes from `order` in `categories.yml`.
+- The build **validates input** and fails with a named error on: unknown `category`; duplicate or filename-mismatched `slug`; `adds` that isn't a list; a `related` entry missing `slug`/`note` or pointing at a nonexistent pattern; a category missing a numeric `order`.
 
 ## Deploy
 
-GitHub Pages builds from the **`gh-pages`** branch (`CNAME` → skillpatterns.ai lives there). `main` is the default branch and the plugin source.
+GitHub Pages builds from the **`gh-pages`** branch (`CNAME` → skillpatterns.ai lives there). `main` is the default branch, the catalog source, and the plugin source; the `Sync catalog` workflow (`.github/workflows/sync-catalog.yml`) keeps `gh-pages` in sync. Actions minutes are free (public repo).
