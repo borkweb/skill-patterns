@@ -38,4 +38,4 @@ Whenever you're authoring or revising a Skill's instructions: drafting a new `SK
 
 This skill is itself a composition of its own catalog: it grounds in an authoritative source (Trusted sources), generates bounded candidates (Bounded option generation), decides what to apply vs. surface (Decision delegation), exposes its choices for override (Clarification gate), and loads detail only when needed (Progressive disclosure).
 
-`references/patterns.md` is a generated snapshot of the live catalog (`skillpatterns.ai/llms.txt`); regenerate it when the catalog changes.
+`references/patterns.md` is generated from the canonical catalog on `main` (`patterns/*.md` + `categories.yml`) by `scripts/build.mjs` — run `npm run build` after editing a pattern. Never hand-edit it.
