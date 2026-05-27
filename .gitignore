@@ -12,3 +12,4 @@ Gemfile.lock
 .ruby-version
 .playwright-mcp/
 .superpowers/
+docs/superpowers
