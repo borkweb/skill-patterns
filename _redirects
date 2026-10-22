@@ -1,0 +1,3 @@
+# Serve the site only on its custom domain. Every request on the Spacefast
+# hostname is sent to the same path on skillpatterns.ai.
+https://skill-patterns.space.fast/*  https://skillpatterns.ai/:splat  301
