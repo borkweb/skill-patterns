@@ -19,6 +19,10 @@ defaults:
 
 markdown: kramdown
 
+# Jekyll skips files that start with an underscore; Spacefast reads _redirects from the built site.
+include:
+  - _redirects
+
 exclude:
   - Gemfile
   - Gemfile.lock
